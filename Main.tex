@@ -1,0 +1,39 @@
+\documentclass[a4paper,12pt]{article}
+% \documentstyle[12pt]{article}    % Specifies the document style.
+
+%-------- Usepackages
+\usepackage{subfiles}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+%-------- Package settings
+\graphicspath{ {./figures/} }
+
+
+%-------- Page setup
+\textwidth 16cm
+\textheight 22cm
+\oddsidemargin 0cm
+\topmargin -1cm
+\def\x{{\bf x}}
+\def\w{{\bf w}}
+\def\squeeze{\itemsep=0pt\parskip=0pt}
+
+
+\title{02285 Artificial Intelligence and Multi-agent Systems}
+
+\author{Emil Rask Maagaard s142955, Dennis Noer Pedersen s073507,\\ 
+  Michel B\o je Randahl Nielsen s093481, Martin Heyn Skytte s094096,\\
+  Bjarke Vad Andersen s142941}
+
+\begin{document}
+\maketitle{}
+
+\section*{Introduction}
+\subfile{introduction}
+
+\section*{Conclusion}
+\subfile{conclusion}
+
+\end{document}
