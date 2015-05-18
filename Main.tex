@@ -1,39 +1,59 @@
-\documentclass[a4paper,12pt]{article}
-% \documentstyle[12pt]{article}    % Specifies the document style.
+\def\year{2015}
+%File: formatting-instruction.tex
+\documentclass[letterpaper]{article}
 
-%-------- Usepackages
+% Required Packages
+\usepackage{aaai}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{courier}
 \usepackage{subfiles}
-\usepackage{listings}
-\usepackage{graphicx}
-\usepackage{hyperref}
+\frenchspacing
+\setlength{\pdfpagewidth}{8.5in}
+\setlength{\pdfpageheight}{11in}
 
-%-------- Package settings
-\graphicspath{ {./figures/} }
+% Section numbers. 
+\setcounter{secnumdepth}{2}  
 
-
-%-------- Page setup
-\textwidth 16cm
-\textheight 22cm
-\oddsidemargin 0cm
-\topmargin -1cm
-\def\x{{\bf x}}
-\def\w{{\bf w}}
-\def\squeeze{\itemsep=0pt\parskip=0pt}
-
-
-\title{02285 Artificial Intelligence and Multi-agent Systems}
-
-\author{Emil Rask Maagaard s142955, Dennis Noer Pedersen s073507,\\ 
-  Michel B\o je Randahl Nielsen s093481, Martin Heyn Skytte s094096,\\
-  Bjarke Vad Andersen s142941}
-
+\nocopyright
 \begin{document}
-\maketitle{}
+% Title and author information
+\title{Formatting Instructions \\for Authors Using \LaTeX{} \\ 02285 AI \& MAS}
+% \author{Author 1 \\ Study number author 1 \And Author 2 \\ Study number author 2 \And Author 3 \\ Study number author 3 \And Author 4 \\ Study number author 4}
+\author{Emil Rask Maagaard \\ s142955 \And Dennis Noer Pedersen \\ s073507 \And
+  Michel B\o je Randahl \\ Nielsen s093481 \AND Martin Heyn Skytte \\ s094096 \And
+  Bjarke Vad Andersen \\ s142941}
+\maketitle
+\begin{abstract}
+\subfile{abstract}
+\end{abstract}
 
-\section*{Introduction}
+\section{Introduction}
 \subfile{introduction}
 
-\section*{Conclusion}
-\subfile{conclusion}
+\section{Background}
+\subfile{background}
+
+\section{Related Work}
+\subfile{related}
+
+\section{Methods}
+\subfile{methods}
+
+\section{Experiments and Results}
+\subfile{experiments}
+
+\section{Discussion}
+\subfile{discussion}
+
+\section{Future Work}
+\subfile{future}
+
+\section{References}
+
+% References and end of paper
+\bibliographystyle{aaai}
+\bibliography{bibliography}
+
 
 \end{document}
