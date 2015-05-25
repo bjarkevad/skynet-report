@@ -1,4 +1,11 @@
 \documentclass[Main]{subfiles}
 \begin{document}
-The work on SkyNet was to try to find a way to solve a planning problem in a set domain. The domain is to simulate robots that transport, blood samples, medicine, beds, medical equipment, food, garbage, etc. By employing robots for transporting tasks, both human resources as well as costs can be cut significantly.
+For solving a problem in the hospital domain Partial Order Planning (POP) and Hierarchical Task Network (HTN) is used. At the time of the competition POP used Multi Queue Best First Search (MQBFS) is used in a naive implementation. \par
+The MQBFS is a way to use multiple queues to explore states, normally these queues are divided into a helpful and a non-helpful list. The algorithm then alternates between the two queues, using the node with the lowest heuristics. This also means that the heuristic is calculated when a node is expanded, which results in a smaller overhead of heuristics. \par
+Another thing used is a global goal order constraint, where the order of the goals is split into two.
+\begin{enumerate}
+	\item Is the goal blocking for another goal, using the initial state as offset for calculation
+	\item The length of the solution of each goal
+\end{enumerate}
+This allows for goals to be ordered before it is split into partial plans using POP. 
 \end{document}
