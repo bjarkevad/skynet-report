@@ -1,6 +1,6 @@
 \documentclass[Main]{subfiles}
 \begin{document}
-For solving a problem in the hospital domain Partial Order Planning (POP) and Hierarchical Task Network (HTN) is used. At the time of the competition POP used Multi Queue Best First Search (MQBFS) is used in a naive implementation. \par
+For solving a problem in the hospital domain Partial Order Planning (POP) and Hierarchical Task Network (HTN) is used. At the time of the competition POP used Multi Queue Best First Search \cite{hector2013a} (MQBFS) is used in a naive implementation. \par
 The MQBFS is a way to use multiple queues to explore states, normally these queues are divided into a helpful and a non-helpful list. The algorithm then alternates between the two queues, using the node with the lowest heuristics. This also means that the heuristic is calculated when a node is expanded, which results in a smaller overhead of heuristics. \par
 Another thing used is a global goal order constraint, where the order of the goals is split into two.
 \begin{enumerate}
