@@ -1,3 +1,19 @@
 \documentclass[Main]{subfiles}
 \begin{document}
+
+In \cite{VanderKrogt2005}, Roman and Mathijs sets up a goal for a multi-agent system:
+\say{Our goal is a system in which \textit{self-interested} agents can \textit{(i)} construct and \textit{repair plans}, \textit{(ii)} \textit{coordinate} their actions, and do so while \textit{(iii)} maintaining their \textit{privacy}.}
+
+Maintaining privacy per se, is not applicable in our domain, but doing so would decrease the size of state-space, 
+making exploration much less resource intensive. 
+This would of course mean that we would have to implement a plan-repair algorithm, that fits the new problem.
+By not having every agent share every detail with every agent, we would reduce the risk combinatorial explosion to some extent.
+
+What is interesting in \cite{VanderKrogt2005}, is the use of plan-repair as a way of coordinating agents, i.e. the only central place of communication is the plain-repair algorithm. 
+
+\todo[inline]{Bidding at auction with heuristics}
+
+\todo[inline]{concurrency/parallel}
+
+
 \end{document}
