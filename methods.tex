@@ -3,8 +3,25 @@
 
 \subsection{Planning procedure}
 
-The proposed planning procedure for a multi-agent system can be divided in to "four ????????" algorithms. The first being the distribution of goals between agents. 
-\textit{Bidding} 
+The proposed planning procedure for a multi-agent system can be divided in to "??????? four ????????" algorithms. The first being the distribution of goals between agents, done with a bidding algorithm. 
+The \textit{bidding algorithm} utilizes simple heuristics consisting of the Manhattan distance between an agent and box, and box and goal, with a slight favoring of as few box moves as possible. All agents in the level will bid on all goals, that it is eligible for solving, and it will do so for all boxes that can solve the goal. After a round of bidding, the smallest bid, in terms of heuristics, is evaluated in order to determine if it is possible for the agent to fulfill the bid. The evaluation is done as a relaxed problem search. 
+
+
+- If not feasible - next bid
+- If agent is "overburdened" - next bid
+
+The \textit{relaxed problem search} regards the level with only one agent, one goal and one box that can possibly solve the goal. The search is done with A^{*} strategy. 
+
+The relaxed problem search also functions as a sort of ``all goals shortest path'' calculation. It is however, not the shortest paths for all goals, but while it might be for some, it shows a possible path for all goals. 
+
+
+\textit{Other advantages of relaxed problem search}
+
+
+
+\cite{BIDDING - SOMETHING from bjarke}
+
+
 
 
 
