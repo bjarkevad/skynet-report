@@ -45,11 +45,26 @@ The relaxed problem search finds a possible solution for all goals, which provid
 
 \textit{Conflict discovering}
 
+Conflicts between goals, meaning solved goals that will block agents from moving to other goals, is used for determining ordering constraints for the final goal solving algorithm. 
+
+Conflicts are defined as goals cells, other than the goal being solved, that an agent has to move through with a box, in order to solve a goal. The path from the solution to the relaxed problem is used for this check. This approach has some drawbacks, one being, that maybe the agent could just move the box in a cell next to the goal, like the case below: \\
+\begin{verbatim}
+++++++++++
++       B+
++0 A b  a+
+++++++++++
+\end{verbatim}
+In this case, the solution to the relaxed problem, will involve the agent pushing box ``A'' through the goal ``b''. This is however not a real conflict, as the agent could just move the box around the goal ``b'', should it already be solved at the time it is solving ``a''. A simple way of trying to avoid this, is to do a check on the cells surrounding the goal. 
+The conflict found in the case above will be determined as being avoidable, and hereby not trigger any ordering constraint between goal ``a'' and ``b''. 
+
+
+
+\textit{Size prioritizing} 
 
 
 
 
-\subsection{POP}
+\subsection{POP - rename or move this "?????" }
 Partial order planning can be said to occur twice in the planning procedure, as the procedure consists of two major parts. The first part is a sort of ``all goals shortest path'' calculation as well as a determination of goal ordering / prioritizing. 
 It is done as a relaxed problem search where the only components regarded are the goal to be solved, a box to solve it with, the agent to move the box, and the walls of the level. The relaxed problem is solved utilizing A^{*} search strategy. 
 
