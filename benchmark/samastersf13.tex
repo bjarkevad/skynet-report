@@ -1,5 +1,11 @@
 \textbf{Benchmark - SAMAStersF13.lvl}
 
+
+The most interesting experiments conducted with the used search strategy involved two strategies. Best-first search using A* evaluation and a modified version, multi-queue best-first search using A* evaluation. The strategy applies to both relaxed and full problem search. 
+The multi-queue best-first search utilizes two queues, one active ``main queue'' and one ``back-up queue''. The strategy is a very naive implementation of a multi-queue BFS, as a normal implementation alternates between expansions of the nodes in both queues \cite{hector2013a}, whereas our implementation relies heavily on the ``main queue'' being the \textif{``correct queue''}. Every time a node is expanded, all other nodes in the ``main queue'' are added to the ``back-up queue'' and removed from the main, such that the child nodes from the expanded node are the only nodes in the ``main queue''. 
+
+
+
 20 second run 
 
 BFS:
@@ -12,7 +18,7 @@ BFS:
 
 Multi queue BFS:
 
-[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Search starting with strategy Multi-Best-first Search (PriorityQueue) using A* evaluation
 [Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 260.84 MB, Free: 219.66 MB, Alloc: 480.50 MB, MaxAlloc: 7282.00 MB]
 
 [Client said] #Explored: 256978, #Frontier: 198642, Time: 20.47 s   [Used: 4007.45 MB, Free: 1369.05 MB, Alloc: 5376.50 MB, MaxAlloc: 7282.00 MB]
