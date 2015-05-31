@@ -1,0 +1,153 @@
+Starting competition run!
+Timeout of 300 seconds. Action limit is 20000
+ ************
+ * Processing complevels/bench/SAholdkaeft.lvl (1 of 1)
+ ************
+[Client said] SearchClient initializing.
+[Client said] Agent: 0 solve goals: [SkyNet.model.Goal@122e6, SkyNet.model.Goal@1230a, SkyNet.model.Goal@12331, SkyNet.model.Goal@12353, SkyNet.model.Goal@1237c, SkyNet.model.Goal@1239c]
+[Client said] Number of agents: 1
+[Client said] Agent: 0, goal: d, box: D
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 3.84 MB, Free: 241.66 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Agent: 0, goal: c, box: C
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 5.12 MB, Free: 240.38 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Agent: 0, goal: e, box: E
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 6.40 MB, Free: 239.10 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Agent: 0, goal: b, box: B
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 6.40 MB, Free: 239.10 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Agent: 0, goal: f, box: F
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 6.40 MB, Free: 239.10 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Agent: 0, goal: a, box: A
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 7.68 MB, Free: 237.82 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Plan d length: 26
+[Client said] Plan c length: 29
+[Client said] Plan e length: 28
+[Client said] Plan b length: 33
+[Client said] Plan f length: 30
+[Client said] Plan a length: 37
+[Client said] Plan d size priority: 20 conflict size: 5 total priority: 3020
+[Client said] Plan c size priority: 20 conflict size: 4 total priority: 2420
+[Client said] Plan e size priority: 20 conflict size: 3 total priority: 1820
+[Client said] Plan b size priority: 10 conflict size: 2 total priority: 1210
+[Client said] Plan f size priority: 20 conflict size: 1 total priority: 620
+[Client said] Plan a size priority: 10 conflict size: 0 total priority: 10
+[Client said] Comparing this: c to d
+[Client said] This conflicts: 2400 and g: 3000
+[Client said] Comparing this: e to c
+[Client said] This conflicts: 1800 and g: 2400
+[Client said] Comparing this: b to e
+[Client said] This conflicts: 1200 and g: 1800
+[Client said] Comparing this: f to b
+[Client said] This conflicts: 600 and g: 1200
+[Client said] Comparing this: a to f
+[Client said] This conflicts: 0 and g: 600
+[Client said] Goal order:
+[Client said] a
+[Client said] f
+[Client said] b
+[Client said] e
+[Client said] c
+[Client said] d
+[Client said] Goals: 6
+[Client said] Plan: D has 7 conflicting boxes
+[Client said] Plan: C has 8 conflicting boxes
+[Client said] Plan: E has 7 conflicting boxes
+[Client said] Plan: B has 9 conflicting boxes
+[Client said] Plan: F has 7 conflicting boxes
+[Client said] Plan: A has 10 conflicting boxes
+[Client said] ______________________________
+[Client said] Agent: 0, goal: a, box: A at 14,1
+[Client said] Goal: 17,17 box: 14,1
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 7.68 MB, Free: 237.82 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 1000, #Frontier: 4792, Time: 0.12 s    [Used: 30.72 MB, Free: 214.78 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 2000, #Frontier: 10190, Time: 0.25 s   [Used: 56.33 MB, Free: 189.17 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 3000, #Frontier: 16393, Time: 0.41 s   [Used: 67.27 MB, Free: 178.23 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 4000, #Frontier: 22743, Time: 0.54 s   [Used: 94.87 MB, Free: 150.63 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Found solution: 2727
+[Client said] Optimal solution: 37
+[Client said] Trying next box. 1 boxes left
+[Client said] Solving goal: a at: 17,17
+[Client said] Plan: D has 5 conflicting boxes
+[Client said] Plan: C has 5 conflicting boxes
+[Client said] Plan: E has 4 conflicting boxes
+[Client said] Plan: B has 6 conflicting boxes
+[Client said] Plan: F has 4 conflicting boxes
+[Client said] ______________________________
+[Client said] Agent: 0, goal: f, box: F at 18,1
+[Client said] Goal: 17,16 box: 18,1
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 101.78 MB, Free: 143.72 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Found solution: 31
+[Client said] Optimal solution: 30
+[Client said] Solving goal: f at: 17,16
+[Client said] Plan: D has 1 conflicting boxes
+[Client said] Plan: C has 2 conflicting boxes
+[Client said] Plan: E has 1 conflicting boxes
+[Client said] Plan: B has 3 conflicting boxes
+[Client said] ______________________________
+[Client said] Agent: 0, goal: b, box: B at 14,8
+[Client said] Goal: 17,15 box: 14,8
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 103.04 MB, Free: 142.46 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Found solution: 25
+[Client said] Optimal solution: 33
+[Client said] Solving goal: b at: 17,15
+[Client said] Plan: D has 1 conflicting boxes
+[Client said] Plan: C has 2 conflicting boxes
+[Client said] Plan: E has 1 conflicting boxes
+[Client said] ______________________________
+[Client said] Agent: 0, goal: e, box: E at 16,1
+[Client said] Goal: 17,14 box: 16,1
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 103.04 MB, Free: 142.46 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Found solution: 27
+[Client said] Optimal solution: 28
+[Client said] Solving goal: e at: 17,14
+[Client said] Plan: D has 1 conflicting boxes
+[Client said] Plan: C has 1 conflicting boxes
+[Client said] ______________________________
+[Client said] Agent: 0, goal: c, box: C at 16,2
+[Client said] Goal: 17,13 box: 16,2
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 103.04 MB, Free: 142.46 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Found solution: 23
+[Client said] Optimal solution: 29
+[Client said] Solving goal: c at: 17,13
+[Client said] Plan: D has 1 conflicting boxes
+[Client said] ______________________________
+[Client said] Agent: 0, goal: d, box: D at 18,7
+[Client said] Goal: 17,12 box: 18,7
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 104.29 MB, Free: 141.21 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Found solution: 11
+[Client said] Optimal solution: 26
+[Client said] Solving goal: d at: 17,12
+[Client said] Found solution of length 2844
+  - Run of level ended
+  - Solution found
+  - Time spent: 0.798 seconds
+  - Actions taken: 2844
