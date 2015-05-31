@@ -1,0 +1,20 @@
+pseudo-code
+
+begin:
+    
+    for ( agent : agents )
+        for ( goal : goals )
+            for ( box : matchingBoxes(goal) )
+
+                bid = agent.bid(goal, box)    //Will only return bid if agent eligible for moving box
+
+            end
+        end
+    end
+
+    
+
+
+
+end
+
