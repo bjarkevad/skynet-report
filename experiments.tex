@@ -48,12 +48,24 @@ Benchmarking the multi queue BFS against standard BFS:
 
 
 
-\subsection{Preprocessing}
+\subsection{Preprocessing ----- "??????" }
+
 Experimenting with preprocessing and ``All goals shortest path'' 
 - Part of the POP algorithm
 
 - POP run after each solved goal 
 --> Better solution --> SO much slower
+
+
+During development experiments with different strategies regarding preprocessing, or extra-processing providing extra information, were conducted. 
+
+As for the goal ordering based on a relaxed problem search on the initial state, the information about the level at this state is very useful. It is, however, preferred to have the same updated information after each solved goal. The moving of one or more boxes, and the change of the agent's location, will most likely leave the goal sorting less than optimal. It could therefore be beneficial to update the goal sorting, and maybe even the choosing of boxes for goals. 
+
+In order to update the information a relaxed problem search is done based on the state after each goal is solved. 
+
+
+- Performance affected by number of goals and agents in level, if few, maybe beneficial, if many it could produce a lot of overhead.
+
 
 
 
