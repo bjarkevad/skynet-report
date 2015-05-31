@@ -22,20 +22,31 @@ If a complex action fails and there is no way to solve the threat, then the algo
 During the planning process the agents communicate about threats in the system, suggestions on how to repair a given threat, successfully completions of goals and refutations of other agents actions.
 A threat can for example be that an agent is standing in the way of another agent, or a box is in the way of an agent and he need help to move it. A suggestion for a repair for a given threat, can for example be that an agent moves away from a given path. A refutation can be that an agent 0 refutes agent 1 to perform his action because agent 1 is moving to the same place as agent 0, in this case a solution could be to tell agent 1 to wait until agent 0 has passed.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.3\textwidth]{plan_collab.png}
+	\caption{Agent 0 needs to pass agent 1 in order to complete his goal, and vice versa}
+	\label{fig:plan_collab}
+\end{figure}
 
-example
-Agent 0 needs to pass agent 1 in order to complete his goal, and vice versa.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{unhtnpop.png}
+	\caption{Example of a plan collaboration between agent 0 and 1 at complex action level}
+	\label{fig:htn_collab}
+\end{figure}
+
+
 When agent 0 first tries to refine his complex action to complete goal a, he discovers that there is a conflict since agent 1 is standing in his way. Agent 0 can thus report failure, and open a new threat for getting a clear path to his goal. Next it is agent 1's turn to contribute to the plan, and he sees the threat, assign a complex action to be completed before his own goal completion complex action, and reports to all agents that he has done a repair to the unified plan. Next, agent 0 will attempt to refine his plan again, but will get a refutation from agent 1 since he is in the progress of moving out of the way, agent 1 can ask agent 0 to wait for one turn in this case. When agent 1 is out of the way, agent 0 can start refining his complex action properly and reach his goal. Agent 1 will attempt to refine his next complex action, which is to complete goal b, however agent 0 will refute his action and ask him to wait. This will continue until agent 0 is out of the way, and finally agent 1 can refine his complex action to solve goal b.
-
+The process of the plan collaboration is visualized in Figure \ref{fig:htn_collab} and \ref{fig:plan_collab}.
 
 - Communication
-UNIFIED HTNPOP PAPER
 
 - Auction of 'unsolvable' or expensive goals \cite{VanderKrogt2005}
   - Cyclic dependencies 
 
 
-%- Pruning algorithm to limit branching factor [http://en.wikipedia.org/wiki/Pruning_(decision_trees)]
+- Pruning algorithm to limit branching factor [http://en.wikipedia.org/wiki/Pruning\_(decision\_trees)]
 \todo[inline]{concurrency/parallel}
 
 \end{document}
