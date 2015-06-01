@@ -1,16 +1,27 @@
 \documentclass[Main]{subfiles}
 \begin{document}
 
+In this report we've presented a solution, that \todo[inline]{Say something.....}
+Our planner has been able to create good plans for many levels, though we're aware of the shortcomings of the implementation.
 
-\textbf{Application awareness}
+\todo[inline]{\textbf{Application awareness?}}
 
-- Speed over optimal solution ?
-The main point that can be taken from this assignment, can be split into two areas.
+% - Speed over optimal solution ?
+
+% The two main points to be taken from this paper are as follows: \todo[inline]{PHRASING!}
+
+When implementing our Least Commitment Planner, we reached the somewhat common issue of performance versus quality of the output; more specifically:
+
 \begin{enumerate}
-	\item Calculation time (speed)
-	\item Optimal solution
+	\item Processing time, i.e. how much CPU time is needed to create a plan
+	\item Optimal solution, i.e. the number of actions taken to solve a level
 \end{enumerate}
-When weighting these two factors up against each other, it often hard to get the best of both worlds, often times one have to be sacrificed for the other. To find a optimal solution often requires more of the state space to be searched, which means that the time will be longer to find a solution. At the same time finding a solution fast often means that less of the state space is searched and the first solution possible is taken.
+
+These two factors often present a trade off, in the sense that it's hard to improve one, without negatively affecting the other. 
+For example would trying to get a more optimal solution, typically cause more of the state space to be searched, which has a negative impact on running time.
+At the same time would trying to quickly find a solution mean that some shortcuts are necessary, which in turn has a negative impact on the quality of the solution.
+
+When weighing these two factors up against each other, it often hard to get the best of both worlds, often times one have to be sacrificed for the other. To find a optimal solution often requires more of the state space to be searched, which means that the time will be longer to find a solution. At the same time finding a solution fast often means that less of the state space is searched and the first solution possible is taken.
 Sometimes the speed of the search is also limited by the chosen data structure, this can be seen in the experiments with BFS vs Multi-queue BFS. Also Heavy preprocessing can be take some time, this is the reason that the initial idea of HTN was scraped in order pursue POP which at the time, was faster and solved more levels.
 
 \end{document}
