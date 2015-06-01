@@ -3,7 +3,7 @@
 
 As artificial intelligence is still very much an open-ended problem, a lot of interesting, original, work related to ours, exists.
 
-In \cite{VanderKrogt2005}, Roman and Mathijs sets up a goal for a multi-agent system:
+In \citep{VanderKrogt2005}, Roman and Mathijs sets up a goal for a multi-agent system:
 \say{Our goal is a system in which \textit{self-interested} agents can \textit{(i)} construct and \textit{repair plans}, \textit{(ii)} \textit{coordinate} their actions, and do so while \textit{(iii)} maintaining their \textit{privacy}.}
 
 Maintaining privacy per se, is not applicable in our domain, but doing so would decrease the size of state-space, 
@@ -11,13 +11,13 @@ making exploration much less resource intensive.
 This would of course mean that we would have to implement a plan-repair algorithm, that fits the new problem.
 By not having every agent share every detail with every agent, we would reduce the risk combinatorial explosion to some extent.
 
-What is interesting in \cite{VanderKrogt2005}, is the use of plan-repair as a way of coordinating agents, i.e. the only central place of communication is the plain-repair algorithm.
+What is interesting in \citep{VanderKrogt2005}, is the use of plan-repair as a way of coordinating agents, i.e. the only central place of communication is the plain-repair algorithm.
 
 This  to the way we've implemented coordination between agents, where agents announce ..... \todo[inline]{finish this...}
 
-Another aspect mentioned in \cite{VanderKrogt2005}, is the concept of bidding on goals at an auction, which is also used in our implementation.
+Another aspect mentioned in \citep{VanderKrogt2005}, is the concept of bidding on goals at an auction, which is also used in our implementation.
 Contrary to our use of bidding, which happens at the start of the program, they've used auctions only when a given agent has decided, that the cost of completing a goal is too high.
 
-Nguyen and Kambhampati \cite{Nguyen2001} talks about how POP-based planners, have disadvantage when it comes to speed, compared to CSP (Constraint Satisfaction Problem) and state search.
+Nguyen and Kambhampati \citep{Nguyen2001} talks about how POP-based planners, have disadvantage when it comes to speed, compared to CSP (Constraint Satisfaction Problem) and state search.
 
 \end{document}
