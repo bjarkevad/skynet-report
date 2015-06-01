@@ -5,7 +5,12 @@
 \textbf{Application awareness}
 
 - Speed over optimal solution ?
-
-
+The main point that can be taken from this assignment, can be split into two areas.
+\begin{enumerate}
+	\item Calculation time (speed)
+	\item Optimal solution
+\end{enumerate}
+When weighting these two factors up against each other, it often hard to get the best of both worlds, often times one have to be sacrificed for the other. To find a optimal solution often requires more of the state space to be searched, which means that the time will be longer to find a solution. At the same time finding a solution fast often means that less of the state space is searched and the first solution possible is taken.
+Sometimes the speed of the search is also limited by the chosen data structure, this can be seen in the experiments with BFS vs Multi-queue BFS. Also Heavy preprocessing can be take some time, this is the reason that the initial idea of HTN was scraped in order pursue POP which at the time, was faster and solved more levels.
 
 \end{document}
