@@ -12,17 +12,15 @@
 % \end{enumerate}
 % This allows for goals to be ordered before it is split into partial plans using POP.
 
-
-% - What is POP (Tuple notation)
 We define a plan for solving a level in the Block World domain, by a tuple of four elements $(A,O,L,P)$ \citep{Weld1994}\citep{Russell2003}, where $A$ is a list of actions, $O$ is a set of ordering constraints, $L$ is a set of weak links between actions, and $P$ is a set of open preconditions. 
 We've followed the definition given in \cite{Russell2003}, with some inspiration from \cite{Weld1994}.
 Though we do use a lot of key-concepts from Partial Order (Least Commitment) Planning, we do \textit{not} follow the specification rigorously in our implementation.
 
-% - MQBFS
 We've also drawn some inspiration from Multi Queue Best First Search (MQBFS) \citep[p.~38]{hector2013a}, where we alternate between two frontier queues (i.e. queues containing un-expanded nodes).
 
+For our multi-agent implementation, we've used the concept of goal bidding, i.e. the concept of having each agent bid, based on a heuristic function, on every goal in the level.
+This is partially derived from the description given in \cite{VanderKrogt2005}, but is heavily modified to fit into our implementation.
 
-% - Bidding / MA
-% - Plan merging
+\todo[inline]{plan merging theory}
 
 \end{document}
