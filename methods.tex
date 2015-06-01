@@ -49,12 +49,21 @@ The relaxed problem search finds a possible solution for all goals, which provid
 Conflicts between goals, meaning solved goals that will block agents from moving to other goals, is used for determining ordering constraints for the final goal solving algorithm. 
 
 Conflicts are defined as goals cells, other than the goal being solved, that an agent has to move through with a box, in order to solve a goal. The path from the solution to the relaxed problem is used for this check. This approach has some drawbacks, one being, that maybe the agent could just move the box in a cell next to the goal, like the case below: \\
-\begin{verbatim}
-++++++++++
-+       B+
-+0 A b  a+
-++++++++++
-\end{verbatim}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{conflict.png}
+    \caption{Case that can be seen as a conflict, but can be avoided}
+    \label{fig:conflict_avoidable}
+\end{figure}
+
+% \begin{verbatim}
+% ++++++++++
+% +       B+
+% +0 A b  a+
+% ++++++++++
+% \end{verbatim}
+
 In this case, the solution to the relaxed problem, will involve the agent pushing box ``A'' through the goal ``b''. This is however not a real conflict, as the agent could just move the box around the goal ``b'', should it already be solved at the time it is solving ``a''. A simple way of trying to avoid this, is to do a check on the cells surrounding the goal. 
 The conflict found in the case above will be determined as being avoidable, and hereby not trigger any ordering constraint between goal ``a'' and ``b''. 
 
@@ -128,13 +137,22 @@ The communication is simply done by letting the agents announce which cells they
 \textbf{Shortcomings}
 - Bidding - if box is taken. At least one case where it CAN fail
 
-The bidding and choosing of boxes for solving goals has one dire weakness, that without re-planning, will leave the client unable to solve the level. As the heuristics used for bidding favors boxes that are close to the goals, 
-\begin{verbatim}
-+++++++++
-+AAAAAAA++++++++
-++++++0 aaaaaaa+
-++++++++++++++++
-\end{verbatim}
+The bidding and choosing of boxes for solving goals has one dire weakness, that without re-planning, will leave the client unable to solve the level. As the heuristics used for bidding favors boxes that are close to the goals,
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{shortcomings.png}
+    \caption{A level where the bidding and choosing of boxes to solve goals with can pose a problem.}
+    \label{fig:shortcomings}
+\end{figure}
+
+% \begin{verbatim}
+% +++++++++
+% +AAAAAAA++++++++
+% ++++++0 aaaaaaa+
+% ++++++++++++++++
+% \end{verbatim}
 
 
 \end{document}
