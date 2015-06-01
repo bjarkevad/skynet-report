@@ -107,14 +107,14 @@ Actions where the agent either pushes or pulls a box, three situations exists; 1
 
 In the first situation the heuristics will be the calculated distance between the box and the goal.
 
-The second situation will be  .........
+\todo[inline]{Maybe change below line to something about subgoals and subgoal heuristics} 
+The second situation will have heuristics based on the distance between agent and the box it is supposed to solve the goal with, and the distance between that box and the goal. In order to discourage this action the distance is multiplied by a small discouraging factor.
 
-The last situation will be the distance between agent and the box it is supposed to solve the goal with, and the distance between that box and the goal. In order to discourage this action the distance is multiplied by a discouraging factor. 
+In the last situation the heuristics will be same as the above, but with a large discouraging factor. 
 
 
 
 \textbf{Partial order plan heuristics}
-
 
 
 
