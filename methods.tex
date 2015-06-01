@@ -84,15 +84,15 @@ The relaxed problem is based on the initial state of the level, hence the soluti
 Inspired by partial order planning we have introduced a backtracking algorithm in our client. Even with the goals ordered with regards to conflicts, situations can occur where the agent places itself in a spot where it can get out of, without breaking a goal. A such situation occurs in the level visible \autoref{fig:backtrack1}:
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.3\textwidth]{backtrack1.png}
+    \includegraphics[width=0.5\textwidth]{backtrack1.png}
     \caption{Agent 0 on the way to place itself behind solved goal A.}
     \label{fig:backtrack1}
 \end{figure}
 When the agent solves a goal, it will proceed to solve the next goal assigned to it. In the above situation, any steps towards solving the next goal, will break the first. We regard this as unwanted behavior and do not allow it. Hence the agent doesn't have any possible moves and can't solve the goal. This is where backtracking comes into play. The agent's actions are backtracked to the immediate state before solving the last goal and the state representing the previously performed action to solve the goal is no longer reachable from that given state. From here, the agent will find an alternative solution to the goal. Once a solution is found, it will proceed to the next goal, the one it was actually trying to solve before backtracking. In the above example it produces the following action:
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.3\textwidth]{backtrack2.png}
-    \caption{}
+    \includegraphics[width=0.5\textwidth]{backtrack2.png}
+    \caption{Agent 0 finds alternative solution to goal A.}
     \label{fig:backtrack2}
 \end{figure}
 
@@ -168,6 +168,10 @@ The bidding and choosing of boxes for solving goals has one dire weakness, that 
 % ++++++0 aaaaaaa+
 % ++++++++++++++++
 % \end{verbatim}
+
+\textbf{Backtracking limitation}
+There is currently no backtracking failsafe which means that the backtracking algorithm could possibly end up backtracking to the initial state and not find any allowed actions, resulting in the level not being solved. 
+At this point the client should repeat the planning with another approach than the one recently explored. 
 
 
 \end{document}
