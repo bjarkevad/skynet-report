@@ -1,15 +1,29 @@
 \documentclass[Main]{subfiles}
 \begin{document}
-For solving a problem in the hospital domain Partial Order Planning (POP) and Hierarchical Task Network (HTN) is used. At the time of the competition POP used Multi Queue Best First Search \cite{hector2013a} (MQBFS) is used in a naive implementation. \par
-The MQBFS is a way to use multiple queues to explore states, normally these queues are divided into a helpful and a non-helpful list. The algorithm then alternates between the two queues, using the node with the lowest heuristics. This also means that the heuristic is calculated when a node is expanded, which results in a smaller overhead of heuristics. \par
-Another thing used is a global goal order constraint, where the order of the goals is split into two.
-\begin{enumerate}
-	\item Is the goal blocking for another goal, using the initial state as offset for calculation
-	\item The length of the solution of each goal
-\end{enumerate}
-This allows for goals to be ordered before it is split into partial plans using POP. 
-\end{document}
+% For solving a problem in the hospital domain Partial Order Planning (POP) and Hierarchical Task Network (HTN) is used.
+% At the time of the competition POP used Multi Queue Best First Search \cite{hector2013a} (MQBFS) is used in a naive implementation. \par
+% The MQBFS is a way to use multiple queues to explore states, normally these queues are divided into a helpful and a non-helpful list. 
+% The algorithm then alternates between the two queues, using the node with the lowest heuristics.
+% This also means that the heuristic is calculated when a node is expanded, which results in a smaller overhead of heuristics. \par
+% Another thing used is a global goal order constraint, where the order of the goals is split into two.
+% \begin{enumerate}
+% 	\item Is the goal blocking for another goal, using the initial state as offset for calculation
+% 	\item The length of the solution of each goal
+% \end{enumerate}
+% This allows for goals to be ordered before it is split into partial plans using POP.
+
 
 % - What is POP (Tuple notation)
-% - MQBFS formal desc
+We define a partial plan by a tuple of four elements $(A,O,L,P)$ \citep{Weld1994}\citep{Russell2003}, where $A$ is a list of actions, $O$ is a set of ordering constraints, $L$ is a set of weak links between actions, and $P$ is a set of open preconditions. 
+We've followed the definition given in \cite{Russell2003}, with some inspiration from \cite{Weld1994}.
+
+Though we do use a lot of key-concepts from Partial Order Planning, we do \textit{not} follow the specification rigorously.
+
+% - MQBFS
+We've also drawn some inspiration from Multi Queue Best First Search (MQBFS) \citep[p.~38]{hector2013a}, where we alternate between two frontier queues (i.e. queues containing un-expanded nodes).
+
+
 % - Bidding / MA
+% - Plan merging
+
+\end{document}
