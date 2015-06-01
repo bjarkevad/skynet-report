@@ -13,7 +13,7 @@ By not having every agent share every detail with every agent, we would reduce t
 
 What is interesting in \citep{VanderKrogt2005}, is the use of plan-repair as a way of coordinating agents, i.e. the only central place of communication is the plain-repair algorithm.
 
-This  to the way we've implemented coordination between agents, where agents announce ..... \todo[inline]{finish this...}
+This is very related to the way we've implemented coordination between agents, where agents announce their (partial) plan to solve a goal, and is told to re-plan for said goal, if their plan conflicts with the plan of another agent.
 
 Another aspect mentioned in \citep{VanderKrogt2005}, is the concept of bidding on goals at an auction, which is also used in our implementation.
 Contrary to our use of bidding, which happens at the start of the program, they've used auctions only when a given agent has decided, that the cost of completing a goal is too high.
