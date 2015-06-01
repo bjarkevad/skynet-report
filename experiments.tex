@@ -33,6 +33,7 @@ When the algorithm starts, it only takes the first box for the first goal into a
 The algorithm starts out with a relaxed search space, as it only takes the first box for the first goal into account and deals the rest of the boxes as obstacles when solving for the first goal.
 When a goal has been completed, the current box remains active and no longer acts as an obstacle so it can be manipulated in the process of solving the next complex actions for the other goals.
 This reduces the branching factor when solving the individual goals in the beginning, but adds more and more branching factor towards the completion of the unified plan.
+The HTN algorithm is inspired by \cite{nau2003shop2}, where \textit{Tasks} correspond to the highest level complex actions, \textit{Methods} corresponds to decomposition of the top level complex action, \textit{Operators} correspond to primitive actions which is derived when refining the complex actions, and the \textit{External function call} corresponds to out utilization of the genetic algorithm for finding an optimal goal order.
 
 In the end, the HTN algorithm was discarded because the POP algorithm was performing a lot better and it was therefore chosen to focus on the POP algorithm.
 
