@@ -67,8 +67,8 @@ The relaxed problem is based on the initial state of the level, hence the soluti
 
 
 
-
 \subsubsection{Backtracking}
+
 Inspired by partial order planning we have introduced a backtracking algorithm in our client. Even with the goals ordered with regards to conflicts, situations can occur where the agent places itself in a spot where it can get out of, without breaking a goal. A such situation occurs in the level visible \autoref{fig:backtrack1}:
 \begin{figure}[h!]
     \centering
@@ -76,6 +76,7 @@ Inspired by partial order planning we have introduced a backtracking algorithm i
     \caption{Agent 0 on the way to place itself behind solved goal A.}
     \label{fig:backtrack1}
 \end{figure}
+
 When the agent solves a goal, it will proceed to solve the next goal assigned to it. In the above situation, any steps towards solving the next goal, will break the first. We regard this as unwanted behavior and do not allow it. Hence the agent doesn't have any possible moves and can't solve the goal. This is where backtracking comes into play. The agent's actions are backtracked to the immediate state before solving the last goal and the state representing the previously performed action to solve the goal is no longer reachable from that given state. From here, the agent will find an alternative solution to the goal. Once a solution is found, it will proceed to the next goal, the one it was actually trying to solve before backtracking. In the above example it produces the following action:
 \begin{figure}[h!]
     \centering
@@ -98,6 +99,7 @@ The second part of our planning procedure
 
 
 
+
 \subsubsection{Heuristics}
  % with modifications to fit specific cases.
 The heuristics implemented in the client is basically the distances between agent, boxes and goals. All distances used for heuristics are calculated as the Manhattan distance.  As the client is implemented to focus on solving a single goal at a time, the heuristics can be simplified to favor actions that is helpful to solving the goal, whereas all other actions can be regarded as non-helpful. 
@@ -113,15 +115,16 @@ The second situation will have heuristics based on the distance between agent an
 In the last situation the heuristics will be same as the above, but with a large discouraging factor. 
 
 
+\textbf{Relaxed problem heuristics}
 
-\textbf{Partial order plan heuristics}
-
-
-
-\textbf{\#\#\#\#\#\#\#\#\#\#\#\#\#\# Heuristics}
+When doing relaxed problem search, the heuristics are based on the distance between the agent and the box, and the distance between the box and the goal. As those, include the walls, are the only elements in the level, there are no other complications to take into account. 
 
 
 
+\textbf{Admissibility of the heuristics}
+
+As the heuristics are calculated as the Manhattan distance between agent and box, and box and goal, it is admissible. However, when non-helpful actions are considered, it is no longer the case due to the use of a discouraging factor. 
+\todi[inline]{Comment on this?? Anyone??}
 
 
 
