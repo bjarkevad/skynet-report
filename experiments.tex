@@ -107,7 +107,7 @@ As the search is being done, nodes are being added to the frontier. Before a nod
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.3\textwidth]{nodes_in_frontier_compare.ong}
+    \includegraphics[width=0.3\textwidth]{nodes_in_frontier_compare.png}
     \caption{Comparison of number of nodes in frontier}
     \label{fig:node_frontier_comparison}
 \end{figure}
@@ -123,7 +123,7 @@ As the search is being done, nodes are being added to the frontier. Before a nod
 
 
 The most interesting experiments conducted with the used search strategy involved two strategies. Best-first search using A* evaluation and a modified version, multi-queue best-first search using A\^{*} evaluation. The strategy applies to both relaxed and full problem search. 
-The multi-queue best-first search utilizes two queues, one active ``main queue'' and one ``back-up queue''. The strategy is a very naive implementation of a multi-queue BFS, as a normal implementation alternates between expansions of the nodes in both queues \pcite{hector2013a}, whereas our implementation relies heavily on the ``main queue'' being the \textif{``correct queue''}. Every time a node is expanded, all other nodes in the ``main queue'' are added to the ``back-up queue'' and removed from the main, such that the child nodes from the expanded node are the only nodes in the ``main queue''. In effect this means that our strategy always believes it makes the right choice, which of course is not the case. In the case where the expanded nodes do not lead to solving a goal, the ``main queue'' will at some point turn up empty. When this happens, the most promising node from the ``back-up queue'' is expanded. As the strategy uses A\^{*} evaluation, it is likely that the most promising node will be a node early in the node tree, as its traveled path is short or non-existing. 
+The multi-queue best-first search utilizes two queues, one active ``main queue'' and one ``back-up queue''. The strategy is a very naive implementation of a multi-queue BFS, as a normal implementation alternates between expansions of the nodes in both queues \citep{hector2013a}, whereas our implementation relies heavily on the ``main queue'' being the \textit{``correct queue''}. Every time a node is expanded, all other nodes in the ``main queue'' are added to the ``back-up queue'' and removed from the main, such that the child nodes from the expanded node are the only nodes in the ``main queue''. In effect this means that our strategy always believes it makes the right choice, which of course is not the case. In the case where the expanded nodes do not lead to solving a goal, the ``main queue'' will at some point turn up empty. When this happens, the most promising node from the ``back-up queue'' is expanded. As the strategy uses A\^{*} evaluation, it is likely that the most promising node will be a node early in the node tree, as its traveled path is short or non-existing. 
 
 
 The two strategies are compared by comparing the solutions they find to a level. The comparison is regarded from two aspects; completion time, and used actions. 
