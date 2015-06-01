@@ -31,7 +31,7 @@ The relaxed problem search also functions as a sort of ``all goals shortest path
 
 The relaxed problem search finds a possible solution for all goals, which provide valuable information about the level for preprocessing. 
 
-
+- " Write more here !!!!!!!!! ??????????????????????????"
 
 
 
@@ -42,14 +42,11 @@ In order to add some knowledge to the search client before starting to solve goa
 Sorting of the goals is done with a comparing algorithm with two factors, being ordering constraints and solution size. The ordering constraints always have the highest priority, such that if there exists a conflict between two goals, the goal cell that blocks for the solution of another goal will have to be solved after the goal who's path it is blocking. If there are no mutual conflicts between to goals, the one with the shortest solution to the relaxed problem will be prioritized before the other. 
 
 
-
-
 \textit{Conflicts and constraints}
 
 Conflicts between goals, meaning solved goals that will block agents from moving to other goals, is used for determining ordering constraints for the final goal solving algorithm. 
 
-Conflicts are defined as goals cells, other than the goal being solved, that an agent has to move through with a box, in order to solve a goal. The path from the solution to the relaxed problem is used for this check. This approach has some drawbacks, one being, that maybe the agent could just move the box in a cell next to the goal, like the case below: \\
-
+Conflicts are defined as goals cells, other than the goal being solved, that an agent has to move through with a box, in order to solve a goal. The path from the solution to the relaxed problem is used for this check. This approach has some drawbacks, one being, that maybe the agent could just move the box in a cell next to the goal, like the case \autoref{fig:conflict_avoidable}:
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.3\textwidth]{conflict.png}
@@ -57,17 +54,9 @@ Conflicts are defined as goals cells, other than the goal being solved, that an 
     \label{fig:conflict_avoidable}
 \end{figure}
 
-% \begin{verbatim}
-% ++++++++++
-% +       B+
-% +0 A b  a+
-% ++++++++++
-% \end{verbatim}
 
 In this case, the solution to the relaxed problem, will involve the agent pushing box ``A'' through the goal ``b''. This is however not a real conflict, as the agent could just move the box around the goal ``b'', should it already be solved at the time it is solving ``a''. A simple way of trying to avoid this, is to do a check on the cells surrounding the goal. 
 The conflict found in the case above will be determined as being avoidable, and hereby not trigger any ordering constraint between goal ``a'' and ``b''. 
-
-
 
 
 \textit{Size prioritizing} 
@@ -75,7 +64,6 @@ The conflict found in the case above will be determined as being avoidable, and 
 THe length of the solution to the relaxed problem is used for prioritizing goals. 
 
 The relaxed problem is based on the initial state of the level, hence the solution size to the relaxed problem will only somewhat apply to the first solved goal, as the agent's location will not be that of the initial state when solving the next goal. 
-
 
 
 
@@ -111,6 +99,18 @@ The second part of our planning procedure
 
 
 \subsubsection{Heuristics}
+ % with modifications to fit specific cases.
+The heuristics implemented in the client is basically the distances between agent, boxes and goals. All distances used for heuristics are calculated as the Manhattan distance.  As the client is implemented to focus on solving a single goal at a time, the heuristics can be simplified to favor actions that is helpful to solving the goal, whereas all other actions can be regarded as non-helpful. 
+When regarding actions that involve the agent moving without a box, the distance calculated will be that between the agent, and the box it is supposed to solve a goal with. 
+
+Actions where the agent either pushes or pulls a box, three situations exists; 1) moving the box suggested for solving a goal, 2) moving a box in that is conflicting with the path to solve the goal, or 3)moving a completely irrelevant box. 
+
+In the first situation the heuristics will be the calculated distance between the box and the goal.
+
+The second situation will be  .........
+
+The last situation will be the distance between agent and the box it is supposed to solve the goal with, and the distance between that box and the goal. In order to discourage this action the distance is multiplied by a discouraging factor. 
+
 
 
 \textbf{Partial order plan heuristics}
