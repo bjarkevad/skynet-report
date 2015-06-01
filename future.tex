@@ -41,7 +41,7 @@ A \textit{refutation} is a message from one agent to another where the sender de
 
 An example of a \textit{threat} can be that one agent is standing in the way of another agent, or that a box is in the way.
 A \textit{repair} for a given \textit{threat} can for example be that an offending agent moves away from a given path, or moves a box away from a given path.
-A \textit{refutation} can for example be that agent '0' refutes the current action of agent '1', because agent '1' is moving to the same place as agent '0'. In this case a solution could be to tell agent '1' to wait until agent '0' has passed.
+A \textit{refutation} can for example be that agent "0" refutes the current action of agent "1", because agent "1" is moving to the same place as agent "0". In this case a solution could be to tell agent "1" to wait until agent "0" has passed.
 
 Obviously, the algorithm will need a way to judge when an agent should wait or if an agent should interrupt its current \textit{complex action} in order to solve a \textit{threat}. These decisions are important, because a wrong decision could lead to a plan which is much longer than the optimal solution.
 To remedy this, a set of social laws could be taken into account each time the algorithm needs to prioritize between the agents.
@@ -50,28 +50,28 @@ One rule could for example be, that the agent who is closest to completing his c
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.3\textwidth]{plan_collab.png}
-	\caption{Agent '0' needs to pass agent '1' in order to complete his goal, and vice versa, and thus there is a conflict which needs to be resolved before any of the agents can complete their individual goals. In the visualized scenario, agent '0' adds a \textit{threat} because it needs a clear path and agent '1' resolves the \textit{threat} by moving out of the way.}
+	\caption{Agent "0" needs to pass agent "1" in order to complete his goal, and vice versa, and thus there is a conflict which needs to be resolved before any of the agents can complete their individual goals. In the visualized scenario, agent "0" adds a \textit{threat} because it needs a clear path and agent "1" resolves the \textit{threat} by moving out of the way.}
 	\label{fig:plan_collab}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.5\textwidth]{unhtnpop.png}
-	\caption{Example of a plan collaboration between agent '0' and agent '1' at \textit{complex action} level. The agents initially gets assigned to complete a goal and a \textit{complex action} to do so, is added to their individual plans.}
+	\caption{Example of a plan collaboration between agent "0" and agent "1" at \textit{complex action} level. The agents initially gets assigned to complete a goal and a \textit{complex action} to do so, is added to their individual plans.}
 	\label{fig:htn_collab}
 \end{figure}
 
 An example of the algorithm in action is visualized in Figure \ref{fig:htn_collab} and \ref{fig:plan_collab}, where two agents are in conflict about solving their individual goals.
 
-In the scenario, agent '0' first tries to refine its \textit{complex action} to complete goal 'a' but discovers that there is a conflict since agent '1' is standing in its way.
-Agent '0' can thus report failure for its plan, and add a new \textit{threat} to the set of unaccomplished \textit{threats}, to get a clear path to its goal.
-Next agent '1' picks the \textit{threat} from the set of unaccomplished \textit{threats} and adds a \textit{complex action} to the beginning of its own plan, and reports to agent '0' that a \textit{repair} for the \textit{threat} has been found.
-Next, agent '0' will attempt to refine its plan again, but will get a \textit{refutation} from agent '1' since it is in the process of moving out of the way and still is blocking for agent '0'.
-As part of the \textit{refutation}, agent '1' will command agent '0' to wait for one turn.
-When agent '1' is out of the way, agent '0' can start refining its \textit{complex action} to complete goal 'a'.
-Since agent '1' has completed its \textit{complex action} to move out of the way of agent '0', it will start to refine its next \textit{complex action} which is to complete goal 'b'.
-However upon generating the first action for the refinement of the \textit{complex action}, agent '1' will get a \textit{refutation} from agent '0', and agent '0' will command agent '1' to wait.
-This conflict will repeat until agent '0' is out of the way, and finally agent '1' can refine its \textit{complex action} to solve goal 'b'.
+In the scenario, agent "0" first tries to refine its \textit{complex action} to complete goal "a" but discovers that there is a conflict since agent "1" is standing in its way.
+Agent "0" can thus report failure for its plan, and add a new \textit{threat} to the set of unaccomplished \textit{threats}, to get a clear path to its goal.
+Next agent "1" picks the \textit{threat} from the set of unaccomplished \textit{threats} and adds a \textit{complex action} to the beginning of its own plan, and reports to agent "0" that a \textit{repair} for the \textit{threat} has been found.
+Next, agent "0" will attempt to refine its plan again, but will get a \textit{refutation} from agent "1" since it is in the process of moving out of the way and still is blocking for agent "0".
+As part of the \textit{refutation}, agent "1" will command agent "0" to wait for one turn.
+When agent "1" is out of the way, agent "0" can start refining its \textit{complex action} to complete goal "a".
+Since agent "1" has completed its \textit{complex action} to move out of the way of agent "0", it will start to refine its next \textit{complex action} which is to complete goal "b".
+However upon generating the first action for the refinement of the \textit{complex action}, agent "1" will get a \textit{refutation} from agent "0", and agent "0" will command agent "1" to wait.
+This conflict will repeat until agent "0" is out of the way, and finally agent "1" can refine its \textit{complex action} to solve goal "b".
 
 \todo[inline]{Communication}
 
