@@ -86,12 +86,15 @@ The relaxed problem is based on the initial state of the level, hence the soluti
 
 
 \subsection{POP - rename or move this ``?????'' }
-Partial order planning can be said to occur twice in the planning procedure, as the procedure consists of two major parts. The first part is a sort of ``all goals shortest path'' calculation as well as a determination of goal ordering / prioritizing. 
+% Partial order planning can be said to occur twice in the planning procedure, as the
+
+Our planning procedure is somewhat inspired by partial order planning, as our client regards the individual goals as isolated as possible. 
+
+The procedure consists of two major parts. The first part is a sort of ``all goals shortest path'' calculation as well as a determination of goal ordering / prioritizing. 
 It is done as a relaxed problem search where the only components regarded are the goal to be solved, a box to solve it with, the agent to move the box, and the walls of the level. The relaxed problem is solved utilizing A\^{*} search strategy. 
 
 
-
-Our planning procedure is somewhat inspired by partial order planning, as our client regards the individual goals as isolated as possible. 
+The second part of our planning procdure
 
 
 
