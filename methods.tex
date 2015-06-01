@@ -4,6 +4,8 @@
 \subsection{Planning procedure}
 
 The proposed planning procedure for a multi-agent system can be divided in to "??????? four ????????" algorithms. The first being the distribution of goals between agents, done with a bidding algorithm\citep{VanderKrogt2005}. 
+
+% Bidding algorithm
 The \textit{bidding algorithm} utilizes simple heuristics consisting of the Manhattan distance between an agent and box, and box and goal, with a slight favoring of as few box moves as possible. All agents in the level will bid on all goals, that it is eligible for solving, and it will do so for all boxes that can solve the goal. After a round of bidding, the smallest bid, in terms of heuristics, is evaluated in order to determine if it is possible for the agent to fulfill the bid. The evaluation is done as a relaxed problem search. 
 
 If the relaxed problem search returns a valid plan for the solving the goal, the agent will win the bid and the goal will be assigned to the agent. The relaxed plan, among others, containing information about goal, box, agent and traveled path, is kept and used for further preprocessing. 
@@ -13,8 +15,7 @@ Should an agent not be able to fulfill a bid, the next best bid will be chosen a
 
 Another step towards the best solution to a level in the bidding algorithm, is an agent burden check. If an agent, that at first glance has the winning bid, are much more burdened than the average agent, the next bid will be chosen. The burden considered here is based on the accumulated length of all the bids the agent has previously won and found solutions to (solutions to relaxed problems). 
 
-
-
+% Relaxed problem search algorithm
 The \textit{relaxed problem search} regards the level with only one agent at its initial location, one goal and one box that can possibly solve the goal. The search is done with $A^*$ strategy. 
 
 The relaxed problem search also functions as a sort of ``all goals shortest path'' calculation. It is however, not the shortest paths for all goals, but while it might be for some, it shows a possible path for all goals. 
@@ -25,11 +26,15 @@ The relaxed problem search also functions as a sort of ``all goals shortest path
 
 The relaxed problem search finds a possible solution for all goals, which provide valuable information about the level for preprocessing. 
 
+
+\todo[inline]{Add something about boxes in conflict with path}
+
+
 - " Write more here !!!!!!!!! ??????????????????????????"
 
 
 
-
+% Goal ordering algorithm
 \subsubsection{Goal ordering}
 
 In order to add some knowledge to the search client before starting to solve goals, the goals are ordered. 
@@ -62,6 +67,20 @@ The relaxed problem is based on the initial state of the level, hence the soluti
 
 
 
+% Full search algorithm
+\subsubsection{Search algorithm}
+Inspired by the POP algorithm each goal is solved one by one, without regarding the completion of the level, but simply considering the level solved when there are no more goals to solve. The implication of this is that the client will most likely not find the optimal solution, as an optimal solution for many levels requires the agent to move boxes along when traveling towards other boxes. A case like this can be seen in the figure \autoref{fig:non_optimal}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{non_optimal.png}
+    \caption{Level with suboptimal solution.}
+    \label{fig:non_optimal}
+\end{figure}
+
+
+
+
+% Backtracking algorithm
 \subsubsection{Backtracking}
 
 Inspired by partial order planning we have introduced a backtracking algorithm in our client. Even with the goals ordered with regards to conflicts, situations can occur where the agent places itself in a spot where it can get out of, without breaking a goal. A such situation occurs in the level visible \autoref{fig:backtrack1}:
@@ -82,6 +101,8 @@ When the agent solves a goal, it will proceed to solve the next goal assigned to
 
 
 
+
+
 \subsection{POP - rename or move this ``?????'' }
 % Partial order planning can be said to occur twice in the planning procedure, as the
 
@@ -95,8 +116,9 @@ The second part of our planning procedure
 
 
 
+% Heuristics
 \subsubsection{Heuristics}
- % with modifications to fit specific cases.
+\label{sec:method_heuristics}
 The heuristics implemented in the client is basically the distances between agent, boxes and goals. All distances used for heuristics are calculated as the Manhattan distance.  As the client is implemented to focus on solving a single goal at a time, the heuristics can be simplified to favor actions that is helpful to solving the goal, whereas all other actions can be regarded as non-helpful. 
 When regarding actions that involve the agent moving without a box, the distance calculated will be that between the agent, and the box it is supposed to solve a goal with. 
 
