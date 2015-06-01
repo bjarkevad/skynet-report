@@ -67,6 +67,11 @@ The relaxed problem is based on the initial state of the level, hence the soluti
 
 
 
+% Goal decomposition
+\subsubsection{Goal decomposition}
+In an effort to make the search algorithm as simple as possible, it is desired to divide the goals into clearly identifier individual subgoals. 
+
+
 % Full search algorithm
 \subsubsection{Search algorithm}
 Inspired by the POP algorithm each goal is solved one by one, without regarding the completion of the level, but simply considering the level solved when there are no more goals to solve. The implication of this is that the client will most likely not find the optimal solution, as an optimal solution for many levels requires the agent to move boxes along when traveling towards other boxes. A case like this can be seen in the figure \autoref{fig:non_optimal}:
