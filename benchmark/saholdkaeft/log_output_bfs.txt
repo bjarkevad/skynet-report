@@ -1,0 +1,121 @@
+Starting competition run!
+Timeout of 300 seconds. Action limit is 20000
+ ************
+ * Processing complevels/bench/SAholdkaeft.lvl (1 of 1)
+ ************
+[Client said] SearchClient initializing.
+[Client said] Agent: 0 solve goals: [SkyNet.model.Goal@122e6, SkyNet.model.Goal@1230a, SkyNet.model.Goal@12331, SkyNet.model.Goal@12353, SkyNet.model.Goal@1237c, SkyNet.model.Goal@1239c]
+[Client said] Number of agents: 1
+[Client said] Agent: 0, goal: d, box: D
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 3.84 MB, Free: 241.66 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Agent: 0, goal: c, box: C
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 6.40 MB, Free: 239.10 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Agent: 0, goal: e, box: E
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 7.68 MB, Free: 237.82 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Agent: 0, goal: b, box: B
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 8.96 MB, Free: 236.54 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Agent: 0, goal: f, box: F
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 10.24 MB, Free: 235.26 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Agent: 0, goal: a, box: A
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 11.52 MB, Free: 233.98 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] Goal state reached
+[Client said]
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] Plan d length: 26
+[Client said] Plan c length: 29
+[Client said] Plan e length: 28
+[Client said] Plan b length: 33
+[Client said] Plan f length: 30
+[Client said] Plan a length: 37
+[Client said] Plan d size priority: 20 conflict size: 5 total priority: 3020
+[Client said] Plan c size priority: 20 conflict size: 4 total priority: 2420
+[Client said] Plan e size priority: 20 conflict size: 3 total priority: 1820
+[Client said] Plan b size priority: 10 conflict size: 2 total priority: 1210
+[Client said] Plan f size priority: 20 conflict size: 1 total priority: 620
+[Client said] Plan a size priority: 10 conflict size: 0 total priority: 10
+[Client said] Comparing this: c to d
+[Client said] This conflicts: 2400 and g: 3000
+[Client said] Comparing this: e to c
+[Client said] This conflicts: 1800 and g: 2400
+[Client said] Comparing this: b to e
+[Client said] This conflicts: 1200 and g: 1800
+[Client said] Comparing this: f to b
+[Client said] This conflicts: 600 and g: 1200
+[Client said] Comparing this: a to f
+[Client said] This conflicts: 0 and g: 600
+[Client said] Goal order:
+[Client said] a
+[Client said] f
+[Client said] b
+[Client said] e
+[Client said] c
+[Client said] d
+[Client said] Goals: 6
+[Client said] Plan: D has 7 conflicting boxes
+[Client said] Plan: C has 8 conflicting boxes
+[Client said] Plan: E has 4 conflicting boxes
+[Client said] Plan: B has 9 conflicting boxes
+[Client said] Plan: F has 4 conflicting boxes
+[Client said] Plan: A has 10 conflicting boxes
+[Client said] ______________________________
+[Client said] Agent: 0, goal: a, box: A at 14,1
+[Client said] Goal: 17,17 box: 14,1
+[Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
+[Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 14.08 MB, Free: 231.42 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 1000, #Frontier: 5706, Time: 0.45 s    [Used: 43.52 MB, Free: 201.98 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 2000, #Frontier: 11361, Time: 1.63 s   [Used: 47.76 MB, Free: 197.74 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 3000, #Frontier: 16711, Time: 3.34 s   [Used: 76.61 MB, Free: 168.89 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 4000, #Frontier: 22107, Time: 6.02 s   [Used: 85.26 MB, Free: 160.24 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 5000, #Frontier: 27340, Time: 9.66 s   [Used: 114.75 MB, Free: 130.75 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 6000, #Frontier: 32631, Time: 14.26 s  [Used: 123.48 MB, Free: 122.02 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 7000, #Frontier: 38455, Time: 19.72 s  [Used: 153.69 MB, Free: 91.81 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 8000, #Frontier: 43728, Time: 25.42 s  [Used: 182.65 MB, Free: 62.85 MB, Alloc: 245.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 9000, #Frontier: 49390, Time: 32.80 s  [Used: 191.21 MB, Free: 201.29 MB, Alloc: 392.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 10000, #Frontier: 54635, Time: 40.44 s     [Used: 220.34 MB, Free: 172.16 MB, Alloc: 392.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 11000, #Frontier: 59846, Time: 48.97 s     [Used: 227.90 MB, Free: 164.60 MB, Alloc: 392.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 12000, #Frontier: 65022, Time: 59.21 s     [Used: 257.03 MB, Free: 135.47 MB, Alloc: 392.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 13000, #Frontier: 70196, Time: 69.38 s     [Used: 264.37 MB, Free: 200.13 MB, Alloc: 464.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 14000, #Frontier: 75417, Time: 81.04 s     [Used: 293.07 MB, Free: 171.43 MB, Alloc: 464.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 15000, #Frontier: 80641, Time: 93.43 s     [Used: 321.78 MB, Free: 142.72 MB, Alloc: 464.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 16000, #Frontier: 85607, Time: 107.25 s    [Used: 324.22 MB, Free: 141.78 MB, Alloc: 466.00 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 17000, #Frontier: 91039, Time: 123.19 s    [Used: 353.00 MB, Free: 113.00 MB, Alloc: 466.00 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 18000, #Frontier: 96155, Time: 138.28 s    [Used: 381.77 MB, Free: 84.23 MB, Alloc: 466.00 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 19000, #Frontier: 101096, Time: 155.05 s   [Used: 379.65 MB, Free: 268.85 MB, Alloc: 648.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 20000, #Frontier: 106216, Time: 173.26 s   [Used: 409.32 MB, Free: 239.18 MB, Alloc: 648.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 21000, #Frontier: 110938, Time: 191.38 s   [Used: 437.24 MB, Free: 211.26 MB, Alloc: 648.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 22000, #Frontier: 115460, Time: 209.36 s   [Used: 435.09 MB, Free: 233.41 MB, Alloc: 668.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 23000, #Frontier: 120501, Time: 231.07 s   [Used: 464.66 MB, Free: 203.84 MB, Alloc: 668.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 24000, #Frontier: 125315, Time: 252.72 s   [Used: 493.68 MB, Free: 174.82 MB, Alloc: 668.50 MB, MaxAlloc: 7282.00 MB]
+[Client said] #Explored: 25000, #Frontier: 130494, Time: 276.22 s   [Used: 490.62 MB, Free: 161.38 MB, Alloc: 652.00 MB, MaxAlloc: 7282.00 MB]
+[CompetitionRunner Exception] Unable to read next action from client (Level is likely not solved)
+java.lang.RuntimeException: Unable to read next action from client
+    at server.communication.ShellCommunicator.nextActionString(Unknown Source)
+    at server.communication.Communicator.getJointAction(Unknown Source)
+    at server.level.Environment.update(Unknown Source)
+    at server.CompetitionRunner.runLevel(Unknown Source)
+    at server.CompetitionRunner.main(Unknown Source)
+  - Run of level ended
+  - Solution not found
+  - Time spent: 0.0 seconds
+  - Actions taken: 0
