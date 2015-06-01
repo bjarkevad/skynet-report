@@ -19,8 +19,8 @@ Should an agent not be able to fulfill a bid, the next best bid will be chosen a
 - If agent is "overburdened" - next bid
 - If box is used
 
-%\cite{BIDDING - SOMETHING from bjarke}
-\cite{van2005coordination}
+
+\cite{van2005coordination} % Bidding
 
 
 The \textit{relaxed problem search} regards the level with only one agent at its initial location, one goal and one box that can possibly solve the goal. The search is done with $A^*$ strategy. 
@@ -38,10 +38,11 @@ The relaxed problem search finds a possible solution for all goals, which provid
 
 \subsubsection{Goal ordering}
 
-- Regarding conflicts
+In order to add some knowledge to the search client before starting to solve goals, the goals are ordered. 
+
+Sorting of the goals is done with a comparing algorithm with two factors, being ordering constraints and solution size. The ordering constraints always have the highest priority, such that if there exists a conflict between two goals, the goal cell that blocks for the solution of another goal will have to be solved after the goal who's path it is blocking. If there are no mutual conflicts between to goals, the one with the shortest solution to the relaxed problem will be prioritized before the other. 
 
 
-- Regarding plan size - from initial location
 
 
 \textit{Conflicts and constraints}
@@ -69,15 +70,13 @@ The conflict found in the case above will be determined as being avoidable, and 
 
 
 
-\textit{Size prioritizing} - Redundant ??
 
-THe length of the solution to the relaxed problem is used for prioritizing goals.
+\textit{Size prioritizing} 
 
+THe length of the solution to the relaxed problem is used for prioritizing goals. 
 
+The relaxed problem is based on the initial state of the level, hence the solution size to the relaxed problem will only somewhat apply to the first solved goal, as the agent's location will not be that of the initial state when solving the next goal. 
 
-\textit{Summary}
-
-Sorting of the goals is done with a comparing algorithm with two factors, being ordering constraints and solution size. The ordering constraints always have the highest priority, such that if there exists a conflict between two goals, the goal cell that blocks for the solution of another goal will have to be solved after the goal who's path it is blocking. If there are no mutual conflicts between to goals, the one with the shortest solution to the relaxed problem will be prioritized before the other. 
 
 
 
