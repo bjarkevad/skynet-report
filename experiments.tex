@@ -28,13 +28,16 @@ Next the outer list is sorted using an evaluation function which calculates the 
 The algorithm now mutates and shuffles some of the population by using parts from the best performing permutations.
 This goes on until the algorithm doesn't seem to produce good results anymore.
 
-The HTN implementation itself, works by taking an ordered set of goals to be completed as input. Then the first goal is chosen and the algorithm decomposes a complex action to move to the box, where only move actions are considered. When primitive move actions to the goal has been generated, it calculates the needed primitive actions to move the box to the goal, where all possible actions are considered in the progress. The algorithm uses the $A^*$ algorithm to decompose into the primitive goals.
-This can be seen as decomposing a complex action CompleteSubGoal into MoveToBox and MoveBoxToGoal and finally into primitive actions for completing the goal.
-When the algorithm starts, it only takes the first box for the first goal into account and the rest act as obstacles. When a goal has been completed, the current box remains visible and no longer acts as an obstacle, and can thus still be manipulated. This reduces the branching factor when solving the individual goals, in the beginning, but adds more and more branching factor towards the completion of the unified plan.
-The algorithm starts out with a relaxed search space, as it only takes the first box for the first goal into account and deals the rest of the boxes as obstacles when solving for the first goal.
+The HTN implementation itself, works by taking set of goals as input, where each goal can be seen as a high level \textit{complex action}. The first goal is chosen and the algorithm decomposes it into a complex action to "move to the box" and a \textit{complex action} to "move the box to the goal". Next the algorithm decomposes the action to "move to the box" into primitive actions where only move actions are considered, and the "move box to goal" action into \textit{primitive actions} where all actions are considered.
+The algorithm uses the $A^*$ algorithm to decompose into the \textit{primitive actions}.
+
+When the algorithm starts, it only takes the first box for the first goal into account and the rest act as obstacles. When a goal has been completed, the current box remains visible and no longer acts as an obstacle, and can thus still be manipulated. This reduces the branching factor when solving the individual goals in the beginning, -but adds more and more branching factor towards the completion of the unified plan.
+
+The algorithm starts out with a relaxed search space, as it only takes the first box, to be moved to the first goal, into account and deals with the rest of the boxes as obstacles -when solving for the first goal.
 When a goal has been completed, the current box remains active and no longer acts as an obstacle so it can be manipulated in the process of solving the next complex actions for the other goals.
 This reduces the branching factor when solving the individual goals in the beginning, but adds more and more branching factor towards the completion of the unified plan.
-The HTN algorithm is inspired by \cite{nau2003shop2}, where \textit{Tasks} correspond to the highest level complex actions, \textit{Methods} corresponds to decomposition of the top level complex action, \textit{Operators} correspond to primitive actions which is derived when refining the complex actions, and the \textit{External function call} corresponds to out utilization of the genetic algorithm for finding an optimal goal order.
+
+The HTN algorithm is inspired by \cite{nau2003shop2}, where \textit{Tasks} correspond to the highest level complex actions, \textit{Methods} corresponds to decomposition of the top level complex action, \textit{Operators} correspond to \textit{primitive actions} which is derived when refining the \textit{complex actions}, and the \textit{External function call} corresponds to the utilization of the genetic algorithm for finding an optimal goal order.
 
 In the end, the HTN algorithm was discarded because the POP algorithm was performing a lot better and it was therefore chosen to focus on the POP algorithm.
 
