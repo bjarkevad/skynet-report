@@ -14,10 +14,9 @@
 
 
 % - What is POP (Tuple notation)
-We define a partial plan by a tuple of four elements $(A,O,L,P)$ \citep{Weld1994}\citep{Russell2003}, where $A$ is a list of actions, $O$ is a set of ordering constraints, $L$ is a set of weak links between actions, and $P$ is a set of open preconditions. 
+We define a plan for solving a level in the Block World domain, by a tuple of four elements $(A,O,L,P)$ \citep{Weld1994}\citep{Russell2003}, where $A$ is a list of actions, $O$ is a set of ordering constraints, $L$ is a set of weak links between actions, and $P$ is a set of open preconditions. 
 We've followed the definition given in \cite{Russell2003}, with some inspiration from \cite{Weld1994}.
-
-Though we do use a lot of key-concepts from Partial Order Planning, we do \textit{not} follow the specification rigorously.
+Though we do use a lot of key-concepts from Partial Order (Least Commitment) Planning, we do \textit{not} follow the specification rigorously in our implementation.
 
 % - MQBFS
 We've also drawn some inspiration from Multi Queue Best First Search (MQBFS) \citep[p.~38]{hector2013a}, where we alternate between two frontier queues (i.e. queues containing un-expanded nodes).
