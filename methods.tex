@@ -161,10 +161,6 @@ As the heuristics are calculated as the Manhattan distance between agent and box
 
 
 
-\todo[inline]{Plan repair}
-\todo[inline]{Tie breaking}
-
-
 \subsection{Multi-agent} 
 
 The implementation of the multi agent client  .... 
@@ -178,7 +174,9 @@ The communication is simply done by letting the agents announce which cells they
 
 
 \textbf{Shortcomings}
+
 - Bidding - if box is taken. At least one case where it CAN fail
+
 
 The bidding and choosing of boxes for solving goals has one dire weakness, that without re-planning, will leave the client unable to solve the level. As the heuristics used for bidding favors boxes that are close to the goals,
 
@@ -190,12 +188,7 @@ The bidding and choosing of boxes for solving goals has one dire weakness, that 
     \label{fig:shortcomings}
 \end{figure}
 
-% \begin{verbatim}
-% +++++++++
-% +AAAAAAA++++++++
-% ++++++0 aaaaaaa+
-% ++++++++++++++++
-% \end{verbatim}
+
 
 \textbf{Backtracking limitation}
 There is currently no backtracking failsafe which means that the backtracking algorithm could possibly end up backtracking to the initial state and not find any allowed actions, resulting in the level not being solved. 
