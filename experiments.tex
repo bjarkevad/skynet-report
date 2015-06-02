@@ -18,7 +18,7 @@ It was attempted to implement a back-tracking algorithm ....
 
 
 \subsection{HTN}
-As part of the development, a simple HTN algorithm for solving levels were implemented for solving single agent scenarios.
+As part of the development, a simple HTN algorithm for solving single agent levels were implemented.
 The algorithm utilized a genetic algorithm to calculate an optimal order in which to solve the goals.
 The motivation for using a genetic algorithm, is that the problem of finding an optimal route to move a set of boxes to a set of goals, can be seen as a traveling salesman problem which is an np-complete task that genetic algorithms can help generate a solution for.
 Genetic algorithms cannot calculate the most optimal order, but it can come up with a relative good suboptimal solution in a timely manner. The genetic algorithm used for the HTN experiments is inspired by the implementation at \cite{genetic}.
@@ -28,7 +28,7 @@ Next the outer list is sorted using an evaluation function which calculates the 
 The algorithm now mutates and shuffles some of the population by using parts from the best performing permutations.
 This goes on until the algorithm doesn't seem to produce good results anymore.
 
-The HTN implementation itself, works by taking set of goals as input, where each goal can be seen as a high level \textit{complex action}. The first goal is chosen and the algorithm decomposes it into a complex action to "move to the box" and a \textit{complex action} to "move the box to the goal". Next the algorithm decomposes the action to "move to the box" into primitive actions where only move actions are considered, and the "move box to goal" action into \textit{primitive actions} where all actions are considered.
+The HTN implementation itself, works by taking set of goals as input, where each goal can be seen as a high level \textit{complex action}. The first goal is chosen and the algorithm decomposes it into a complex action to "move to the box" and a \textit{complex action} to "move the box to the goal". Next the algorithm decomposes the action "move to the box" into primitive actions where only move actions are considered, and the "move box to goal" action into \textit{primitive actions} where all actions are considered.
 The algorithm uses the $A^*$ algorithm to decompose into the \textit{primitive actions}.
 
 When the algorithm starts, it only takes the first box for the first goal into account and the rest act as obstacles. When a goal has been completed, the current box remains visible and no longer acts as an obstacle, and can thus still be manipulated. This reduces the branching factor when solving the individual goals in the beginning, -but adds more and more branching factor towards the completion of the unified plan.

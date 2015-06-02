@@ -14,13 +14,31 @@
 
 - Re-order goals?
 
-- Multi-agent: Conflict handling
+\subsection{Multi-agent enhancements}
 
-The current implementation lacks solid conflict handling when solving multi-agent levels. To make up for this, we propose to enhance the system with the methods described in \cite{pellier2007unified}.
+The current implementation lacks solid conflict handling to be able to efficiently solve multi-agent levels.
+A method is needed for deciding, for example, who should go first and who should wait when two agents are blocking each other.
+
+There are multiple ways to enhance the current implementation to obtain conflict handling.
+
+
+\subsubsection{Dealing with conflicts in non-concurrent planning}
+
+One way to add conflict handling, could be to enhance the current non-concurrent planning process with agents taking other agents position into account as an agents plan is generated.
+
+Currently, the goals are ordered with regards to whether or not they disrupt or conflict with other subgoal plans \autoref{sect:subgoal_pop}.
+As the planning is executed sequentially in the determined goal order, and not concurrently, the communication between agents and determination of ``who is right'' can be simplified.
+If an agent moves a box or occupies a cell at a given time, it is the other agents responsibility to comply with this and either wait or do something else.
+However, this practice relies on that the determined goal order is correct possible to complete.
+
+
+\subsection{Dealing with conflicts and plan collaboration in concurrent planning}
+
+Another way, could be to adjust the planning to be performed concurrently for all agents, using methods described in \cite{pellier2007unified}.
 
 In this paper, an algorithm is described for solving multi agent problems where a set of interdependent agents need to collaborate to solve a common goal.
 The algorithm uses methodologies from POP, HTN and a communication scheme between the agents to ensure the unified planning is consistent.
-The algorithm works by generating a partial plan, for each agent in isolation from the other agents, and utilizes a communication scheme between the agents to ensure consistency in the resulting unified plan.
+The algorithm works by generating a partial plan, for each agent in isolation from the other agents, and utilizes a communication scheme between the agents to ensure consistency in the resulting unified plan for all timesteps.
 
 The algorithm starts out by defining a set of open goals for the whole level to be completed and an empty set of \textit{threats}.
 The open goals contains unassigned subgoals to be completed in order for the common goal to be completed.
@@ -30,9 +48,15 @@ Each agent is assigned to accomplish one of these subgoals by adding a \textit{c
 After each of the agents has been assigned a \textit{complex action}, the agents will start to refine them into \textit{primitive actions}.
 The agents take turn in refining on the first unrefined \textit{complex action} in their plan.
 
+
+\textbf{Conflicts and threats}
+
 If a conflict arises in the plan, eg. the refinement of a \textit{complex action} fails, a new \textit{threat} is added to the set of \textit{threats}.
 One of the agents now has to resolve this \textit{threat} and add a \textit{complex action} to do so to its plan.
 If refining a \textit{complex action} fails and there is no way to solve the \textit{threat}, the algorithm must backtrack and try alternative refinements of the failing \textit{complex action}. If the alternative refinements also fails the algorithm must backtrack further back to a previous \textit{complex action}.
+
+
+\textbf{Communication}
 
 During the planning process the agents communicate about \textit{threats}, \textit{repairs}, partial plan completions and \textit{refutations}.
 A \textit{repair} is a suggestion on how to fix a given \textit{threat}.
@@ -42,6 +66,9 @@ A \textit{refutation} is a message from one agent to another where the sender de
 An example of a \textit{threat} can be that one agent is standing in the way of another agent, or that a box is in the way.
 A \textit{repair} for a given \textit{threat} can for example be that an offending agent moves away from a given path, or moves a box away from a given path.
 A \textit{refutation} can for example be that agent "0" refutes the current action of agent "1", because agent "1" is moving to the same place as agent "0". In this case a solution could be to tell agent "1" to wait until agent "0" has passed.
+
+
+\textbf{Social laws}
 
 Obviously, the algorithm will need a way to judge when an agent should wait or if an agent should interrupt its current \textit{complex action} in order to solve a \textit{threat}. These decisions are important, because a wrong decision could lead to a plan which is much longer than the optimal solution.
 To remedy this, a set of social laws could be taken into account each time the algorithm needs to prioritize between the agents.
@@ -57,7 +84,7 @@ One rule could for example be, that the agent who is closest to completing his c
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.5\textwidth]{unhtnpop.png}
-	\caption{Example of a plan collaboration between agent "0" and agent "1" at \textit{complex action} level. The agents initially gets assigned to complete a goal and a \textit{complex action} to do so, is added to their individual plans.}
+	\caption{Example of a plan collaboration between agent "0" and agent "1" at \textit{complex action} level, for the scenario visualized in Figure \ref{fig:htn_collab}. The agents initially gets assigned to complete a goal and a \textit{complex action}.}
 	\label{fig:htn_collab}
 \end{figure}
 
