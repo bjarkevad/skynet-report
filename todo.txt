@@ -1,0 +1,18 @@
+# TODO
+
+
+Method: 
+- Goal decomposition
+- Agent conflict "resolution"
+- 
+- Fix overall structure
+
+
+Experimenting:
+- Comment on queue vs hashset figures
+- Insert part about competition - comment on data structure used here
+
+
+Future:
+- Agent communication (move part from methods)
+
