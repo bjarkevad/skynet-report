@@ -8,7 +8,6 @@ Method:
 
 
 Experimenting:
-- Comment on queue vs hashset figures
 - Insert part about competition - comment on data structure used here
 
 
