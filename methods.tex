@@ -79,7 +79,7 @@ The implication of this approach to goal decomposition, using the path that is f
 
 % Full search algorithm
 \subsubsection{Search algorithm}
-Inspired by the POP algorithm each goal is solved one by one, without regarding the completion of the level, but simply considering the level solved when there are no more goals to solve. The implication of this is that the client will most likely not find the optimal solution, as an optimal solution for many levels requires the agent to move boxes along when traveling towards other boxes. A case like this can be seen in the figure \autoref{fig:non_optimal}:
+Inspired by the POP algorithm each goal is solved one by one, without regarding the completion of the level, but simply considering the level solved when there are no more goals to solve. The implication of this is that the client will most likely not find the optimal solution, as an optimal solution for many levels requires the agent to move boxes along when traveling towards other boxes. A case like this can be seen in \autoref{fig:non_optimal}:
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.3\textwidth]{non_optimal.png}
@@ -93,7 +93,7 @@ Inspired by the POP algorithm each goal is solved one by one, without regarding 
 % Backtracking algorithm
 \subsubsection{Backtracking}
 
-Inspired by partial order planning we have introduced a backtracking algorithm in our client. Even with the goals ordered with regards to conflicts, situations can occur where the agent places itself in a spot where it can get out of, without breaking a goal. A such situation occurs in the level visible \autoref{fig:backtrack1}:
+Inspired by partial order planning we have introduced a backtracking algorithm in our client. Even with the goals ordered with regards to conflicts, situations can occur where the agent places itself in a spot where it can get out of, without breaking a goal. A such situation occurs in the level visible in \autoref{fig:backtrack1}:
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\textwidth]{backtrack1.png}
@@ -130,17 +130,14 @@ The second part of our planning procedure
 % Heuristics
 \subsubsection{Heuristics}
 \label{sec:method_heuristics}
-The heuristics implemented in the client is basically the distances between agent, boxes and goals. All distances used for heuristics are calculated as the Manhattan distance.  As the client is implemented to focus on solving a single goal at a time, the heuristics can be simplified to favor actions that is helpful to solving the goal, whereas all other actions can be regarded as non-helpful. 
+The heuristics implemented in the client is basically the distances between agent, boxes and goals. All distances used for heuristics are calculated as the Manhattan distance.  As the client is implemented to focus on solving a single goal, or subgoal, at a time, the heuristics can be simplified to favor actions that is helpful to solving that goal, whereas all other actions can be regarded as non-helpful. 
 When regarding actions that involve the agent moving without a box, the distance calculated will be that between the agent, and the box it is supposed to solve a goal with. 
 
-Actions where the agent either pushes or pulls a box, three situations exists; 1) moving the box suggested for solving a goal, 2) moving a box in that is conflicting with the path to solve the goal, or 3)moving a completely irrelevant box. 
+Actions where the agent either pushes or pulls a box, two situations exists; 1) moving the box suggested for solving a goal, or 2) moving a completely irrelevant box. 
 
 In the first situation the heuristics will be the calculated distance between the box and the goal.
 
-\todo[inline]{Maybe change below line to something about subgoals and subgoal heuristics} 
-The second situation will have heuristics based on the distance between agent and the box it is supposed to solve the goal with, and the distance between that box and the goal. In order to discourage this action the distance is multiplied by a small discouraging factor.
-
-In the last situation the heuristics will be same as the above, but with a large discouraging factor. 
+In the other situation the heuristics will be based on the distance between agent and the box it is supposed to solve the goal with, and the distance between that box and the goal. In order to discourage this action the distance is multiplied by a discouraging factor.
 
 
 \textbf{Relaxed problem heuristics}
@@ -152,6 +149,7 @@ When doing relaxed problem search, the heuristics are based on the distance betw
 \textbf{Admissibility of heuristics}
 
 As the heuristics are calculated as the Manhattan distance between agent and box, and box and goal, it is admissible. However, when non-helpful actions are considered, it is no longer the case due to the use of a discouraging factor. 
+
 \todo[inline]{Comment on this?? Anyone??}
 
 
