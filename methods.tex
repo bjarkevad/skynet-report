@@ -69,7 +69,12 @@ The relaxed problem is based on the initial state of the level, hence the soluti
 
 % Goal decomposition
 \subsubsection{Goal decomposition}
-In an effort to make the search algorithm as simple as possible, it is desired to divide the goals into clearly identifier individual subgoals. 
+In an effort to make the search algorithm as simple as possible, it is desired to divide the goals into clearly identified individual subgoals. A situation it is an advantage to decompose a goal in our client's domain, could be the situation where a box is blocking the path for an agent moving another box towards a goal. In order to avoid creating complex and computational heavy heuristics taking all parts of a level into account, the goal decomposition allows us to only consider few elements at a time. The path used to find conflicting boxes, is the path found by solving the relaxed problem for each goal.
+
+The goal is decomposed into subgoals where each subgoal consists of a box that is blocking the path, and a cell where the box should be moved to so that it no longer blocks the path. The subgoals are sorted in the order in which the appear to be blocking the path to the actual goal. The subgoals are assigned to the goal, such that the subgoals should be completed before the client considers solving the actual goal. This is done by creating a specific case for the heuristics when subgoals exists on a goal. The heuristics is described in \autoref{sec:method_heuristics}. 
+
+The implication of this approach to goal decomposition, using the path that is found by solving the goals as relaxed problems in the initial state, is that some of the created subgoals might not pose a conflict anymore, as the level and agent locations are changed. It is a very naive implementation that believes that the, in the beginning determined path, is the correct path. 
+
 
 
 % Full search algorithm
