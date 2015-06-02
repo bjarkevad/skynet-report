@@ -2,7 +2,6 @@
 
 
 Method: 
-- Goal decomposition
 - Agent conflict "resolution"
 - 
 - Fix overall structure
