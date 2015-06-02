@@ -134,19 +134,6 @@ RAM: 8GB allowed to allocate for the client
 As the search is being done, nodes are being added to the frontier. Before a node is added, a check is performed to see if the node already is in the frontier. As the frontier grows large, this check can be expensive to perform. In order to make the lookup faster, experiments were conducted with a queue and a hash set in parallel. The hash set provides information about whether or not a node is already contained in the frontier.
 
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.3\textwidth]{nodes_explored_compare.png}
-    \caption{Comparison of number of nodes explored}
-    \label{fig:node_explored_comparison}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.3\textwidth]{nodes_in_frontier_compare.png}
-    \caption{Comparison of number of nodes in frontier}
-    \label{fig:node_frontier_comparison}
-\end{figure}
 
 
 % % % % % % % % % % % % Something
@@ -175,9 +162,28 @@ As the search is being done, nodes are being added to the frontier. Before a nod
 
 
 \subsection{Results}
+\FloatBarrier
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{nodes_explored_compare.png}
+    \caption{Comparison of number of nodes explored}
+    \label{fig:node_explored_comparison}
+\end{figure}
 
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[width=0.3\textwidth]{nodes_in_frontier_compare.png}
+%     \caption{Comparison of number of nodes in frontier}
+%     \label{fig:node_frontier_comparison}
+% \end{figure}
 
+On \autoref{fig:node_explored_comparison} we see a comparison of the performance, between the use of two different data structures for holding nodes. 
+The difference is mainly caused by the different performance characteristics for random look ups, 
+where a hash set performs look ups in constant time ($O(1)$) in the average case,
+priority queues does so linearly to the number of elements in the queue ($O(n)$).
+
+As look ups happen when checking if a node is already explored, the operation happens with a very high frequency, which causes the major difference in performance observed on \autoref{fig:node_explored_comparison}.
 
 \FloatBarrier
 \end{document}
