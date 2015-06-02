@@ -14,6 +14,10 @@
 
 - Re-order goals?
 
+\subsection{Heuristics optimization}
+The current implementation of heuristics is very simple, and could with advantage be developed further to regard the plan to the relaxed problem as a guide-line. An idea would be to implement ``tie-breaking'' heuristics \citep{BJARKE SKRIV DET RIGTIGE HER}, where the heuristics favor movements as close as possible to the plan solving the relaxed problem. 
+
+
 \subsection{Multi-agent enhancements}
 
 The current implementation lacks solid conflict handling to be able to efficiently solve multi-agent levels.
@@ -34,7 +38,7 @@ However, this practice relies on that the determined goal order is correct possi
 
 \subsection{Dealing with conflicts and plan collaboration in concurrent planning}
 
-Another way, could be to adjust the planning to be performed concurrently for all agents, using methods described in \cite{pellier2007unified}.
+Another way, could be to adjust the planning to be performed concurrently for all agents, using methods described in \citep{pellier2007unified}.
 
 In this paper, an algorithm is described for solving multi agent problems where a set of interdependent agents need to collaborate to solve a common goal.
 The algorithm uses methodologies from POP, HTN and a communication scheme between the agents to ensure the unified planning is consistent.
