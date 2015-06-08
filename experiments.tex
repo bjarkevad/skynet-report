@@ -63,23 +63,23 @@ Multi-queue BFS & 22.6 s       & 210                       %& 44                
 
 
 
-\subsection{Preprocessing ----- "??????" }
+\subsection{Preprocessing overhead}
 
-Experimenting with preprocessing and ``all goals' shortest path'' 
-- Part of the POP algorithm
+In order to make the search efficient and fast, we want it to be as informed as possible. However, obtaining information for the search takes time and may pose an undesired overhead. To determine how much preprocessing should be done a lot of experimenting and tweaking with this, has been conducted. 
 
-- POP run after each solved goal 
---> Better solution --> SO much slower
+The preprocessing being done in our implementation concerns the ordering of goals, as well as determining which boxes to solve each goal with. As the preprocessing is a performed as a partial relaxed problem based on the initial state of the level, the information gathered will be outdated as soon as any actions are performed. 
 
-
-During development experiments with different strategies regarding preprocessing, or extra-processing providing extra information, were conducted. 
-
-As for the goal ordering based on a relaxed problem search on the initial state, the information about the level at this state is very useful. It is, however, preferred to have the same updated information after each solved goal. The moving of one or more boxes, and the change of the agent's location, will most likely leave the goal sorting less than optimal. It could therefore be beneficial to update the goal sorting, and maybe even the choosing of boxes for goals. 
-
-In order to update the information a relaxed problem search is done based on the state after each goal is solved. 
+As an experiment, an ``all goals' shortest path'' algorithm was executed between each solved goal. The algorithm would solve all goals with all possible boxes as partial relaxed problems and then determine which box produces the shortest solution for each goal as well as determine mutual conflicts between goals. After obtaining the information, the goals could be ordered again with respect to the updated state. When considering levels with few goals and boxes, the overhead introduced by this algorithm is notable without being obstructive. However, when a level contains 50 boxes and goals spread over 4 types, the amount of possible combinations explodes and the overhead becomes a visible disadvantage, even though the found solution has the potential of being much better. 
 
 
-- Performance affected by number of goals and agents in level, if few, maybe beneficial, if many it could produce a lot of overhead.
+
+% During development experiments with different strategies regarding preprocessing, or extra-processing providing extra information, were conducted. 
+
+% As for the goal ordering based on a relaxed problem search on the initial state, the information about the level at this state is very useful. It is, however, preferred to have the same updated information after each solved goal. The moving of one or more boxes, and the change of the agent's location, will most likely leave the goal sorting less than optimal. It could therefore be beneficial to update the goal sorting, and maybe even the choosing of boxes for goals. 
+
+% In order to update the information a relaxed problem search is done based on the state after each goal is solved. 
+
+% - Performance affected by number of goals and agents in level, if few, maybe beneficial, if many it could produce a lot of overhead.
 
 
 
@@ -101,9 +101,6 @@ As the search is being done, nodes are being added to the frontier. Before a nod
 
 
 % % % % % % % % % % % % Something
-
-
-
 
 
 
