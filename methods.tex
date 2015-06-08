@@ -28,7 +28,7 @@ The relaxed problem search also functions as a sort of ``all goals shortest path
 Our planning procedure is somewhat inspired by partial order planning, as our client regards the individual goals as isolated as possible. 
 
 The procedure consists of two major parts. The first part is a sort of ``all goals' shortest path'' calculation as well as a determination of goal ordering / prioritizing. 
-It is done as a relaxed problem search where the only components regarded are the goal to be solved, a box to solve it with, the agent to move the box, and the walls of the level. The relaxed problem is solved utilizing A\^{*} search strategy. 
+It is done as a relaxed problem search where the only components regarded are the goal to be solved, a box to solve it with, the agent to move the box, and the walls of the level. The relaxed problem is solved utilizing $A^*$ search strategy. 
 
 
 The second part of our planning procedure  ............................ "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -51,7 +51,7 @@ The actual search is done by exploring all possible actions in a given state.
 
 % Goal ordering algorithm
 \subsubsection{Goal ordering}
-
+\label{sec:goal_ordering}
 In order to add some knowledge to the search client before starting to solve goals, the goals are ordered. 
 
 Sorting of the goals is done with a comparing algorithm with two factors, being ordering constraints and solution size. The ordering constraints always have the highest priority, such that if there exists a conflict between two goals, the goal cell that blocks for the solution of another goal will have to be solved after the goal who's path it is blocking. If there are no mutual conflicts between to goals, the one with the shortest solution to the relaxed problem will be prioritized before the other. 
@@ -154,7 +154,7 @@ As the heuristics are calculated as the Manhattan distance between agent and box
 The implementation of the multi-agent client is somewhat inspired by the Generalized Partial Global Planning from \cite{Decker2000}. 
 
 \todo[inline]{FIX sect:subgoal\_pop}
-The goals are ordered with regards to whether or not they disrupt or conflict with other subgoal plans \autoref{sect:subgoal_pop}. As the planning is executed sequentially in the determined goal order, and not concurrently, the communication between agents is simplified as the hierarchy of agents and plans is already established by the goal order. 
+The goals are ordered with regards to whether or not they disrupt or conflict with other subgoal plans \autoref{sec:goal_ordering}. As the planning is executed sequentially in the determined goal order, and not concurrently, the communication between agents is simplified as the hierarchy of agents and plans is already established by the goal order. 
 If an agent moves a box or occupies a cell at a given time, it is the other agents responsibility to comply with this and either wait or do something else. However, this practice relies on that the determined goal order is correct possible to complete. 
 
 The communication is simply done by letting the agents announce which cells they occupy at a given time in the plan as well as which box they move, if any. The other agents' planning procedures are then affected by the occupied cells, such that the agents' are imposed a resource constraint, keeping them from trying to use resources that are busy. 

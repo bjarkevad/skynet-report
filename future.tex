@@ -30,7 +30,7 @@ There are multiple ways to enhance the current implementation to obtain conflict
 
 One way to add conflict handling, could be to enhance the current non-concurrent planning process with agents taking other agents position into account as an agents plan is generated.
 
-Currently, the goals are ordered with regards to whether or not they disrupt or conflict with other subgoal plans \autoref{sect:subgoal_pop}.
+Currently, the goals are ordered with regards to whether or not they disrupt or conflict with other subgoal plans \autoref{sec:goal_ordering}.
 As the planning is executed sequentially in the determined goal order, and not concurrently, the communication between agents and determination of ``who is right'' can be simplified.
 If an agent moves a box or occupies a cell at a given time, it is the other agents responsibility to comply with this and either wait or do something else.
 However, this practice relies on that the determined goal order is correct possible to complete.
