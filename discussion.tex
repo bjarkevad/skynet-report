@@ -1,40 +1,54 @@
 \documentclass[Main]{subfiles}
 \begin{document}
 
-% In this report we've presented a solution, that \todo[inline]{Say something.....}
-Our planner has been able to create good plans for many levels, though we're aware of the shortcomings of the implementation.
-
-% \todo[inline]{\textbf{Application awareness?}}
-
-% - Speed over optimal solution ?
-
-% The two main points to be taken from this paper are as follows: \todo[inline]{PHRASING!}
-
-When implementing our Least Commitment Planner, we reached the somewhat common issue of performance versus quality of the output; more specifically:
+Our planner has been able to create good plans for many levels, though we're
+aware of the shortcomings of the implementation.
+When implementing our Least Commitment Planner, we reached the somewhat common
+issue of performance versus quality of the output; more specifically:
 
 \begin{enumerate}
 	\item Processing time, i.e. how much CPU time is needed to create a plan
 	\item Optimal solution, i.e. the number of actions taken to solve a level
 \end{enumerate}
 
-These two factors often present a trade off, in the sense that it's hard to improve one, without negatively affecting the other. 
-For example, trying to get a more optimal solution typically cause more of the state space to be searched, which has a negative impact on running time.
-At the same time would trying to quickly find a solution mean that some shortcuts are necessary, which in turn has a negative impact on the quality of the solution.
+These two factors often present a trade off, in the sense that it's hard to
+improve one, without negatively affecting the other. 
+For example, trying to get a more optimal solution typically cause more of the
+state space to be searched, which has a negative impact on running time.
+At the same time would trying to quickly find a solution mean that some
+shortcuts are necessary, which in turn has a negative impact on the quality of
+the solution.
 
-The choice of data structures also had, as expected, a very drastic effect on performance ---
-this is especially evident in the difference in performance characteristics when using either BFS or MQBFS, as seen in \autoref{sec:experiments}.
+The choice of data structures also had, as expected, a very drastic effect on
+performance ---
+this is especially evident in the difference in performance characteristics when
+using either BFS or MQBFS, as seen in \autoref{sec:experiments}.
 
-A somewhat heavier use of pre-processing was also considered when working with Hierarchical Task Networks, but was scraped in favor of our Partial Order Planner. 
-POP, which had shown some rather impressive results, both by being able to solve more level, but also by doing so quicker, then became the main focus point of the paper.
-
+A somewhat heavier use of pre-processing was also considered when working with
+Hierarchical Task Networks, but was scraped in favor of our Partial Order
+Planner. 
+POP, which had shown some rather impressive results, both by being able to solve
+more level, but also by doing so quicker, then became the main focus point of
+the paper.
 
 \textbf{Adapting the planner to the situation}
 
-Throughout the development of our planner, many methods, algorithms and search strategies have been tried out and tested on many different and demanding levels. When the planner would struggle to Tsolve a level, changes were made to the planner that enabled it to solve that level. However, in some cases these changes also meant that the planner was no longer able to solve some levels that it was previously able to. Other changes meant that the planner was faster solving some levels, while much slower at solving others. Through all this testing and experimenting, it has become evident that is a grand task to create a generic automated planning system, even within this sole domain. 
+Throughout the development of our planner, many methods, algorithms and search
+strategies have been tried out and tested on many different and demanding
+levels. When the planner would struggle to Tsolve a level, changes were made to
+the planner that enabled it to solve that level. However, in some cases these
+changes also meant that the planner was no longer able to solve some levels that
+it was previously able to. Other changes meant that the planner was faster
+solving some levels, while much slower at solving others. Through all this
+testing and experimenting, it has become evident that is a grand task to create
+a generic automated planning system, even within this sole domain. 
 
-One search strategy proved to be fast while producing unnecessary long solutions. Another strategy proved to be slow, but found good, and close to optimal, solutions. In addition one strategy could solve some levels the other couldn't, and vice versa. This led us to consider making the planner adaptable to different situations by letting the strategy be dependent on the level, or time spent searching for a solution. However, we didn't do this, because then again, how would it react to a level we had not though of? Therefore we strove to develop a more robust and generic planner. 
-
-
-
-
+One search strategy proved to be fast while producing unnecessary long
+solutions. Another strategy proved to be slow, but found good, and close to
+optimal, solutions. In addition one strategy could solve some levels the other
+couldn't, and vice versa. This led us to consider making the planner adaptable
+to different situations by letting the strategy be dependent on the level, or
+time spent searching for a solution. However, we didn't do this, because then
+again, how would it react to a level we had not though of? Therefore we strove
+to develop a more robust and generic planner. 
 \end{document}
