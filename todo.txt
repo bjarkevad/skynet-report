@@ -17,6 +17,8 @@ Experimenting:
 Future:
 - Agent communication (move part from methods)
 
+- Occupied 
+
 - Total re-planning
 
 - "Planned subtasks that agents cannot carry out themselves need to be reallocated"
@@ -25,4 +27,6 @@ Future:
 Refs:
 
 5. Decker, K., Li, J.: Coordinating mutually exclusive resources using GPGP. Autonomous Agents and Multi-Agent Systems 3 (2000) 113–157
+
+
 6. von Martial, F.: Coordinating Plans of Autonomous Agents. Volume 610 of Lecture Notes on AI. (1992)
