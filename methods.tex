@@ -160,6 +160,8 @@ As the heuristics are calculated as the Manhattan distance between agent and box
 
 \subsection{Multi-agent} 
 
+\todo[inline]{ FIX REFERENCE BJARKE !!!!! }
+
 The implementation of the multi-agent client is somewhat inspired by the Generalized Partial Global Planning from \cite{Decker, K., Li, J}. 
 
 The goals are ordered with regards to whether or not they disrupt or conflict with other subgoal plans \autoref{sect:subgoal_pop}. As the planning is executed sequentially in the determined goal order, and not concurrently, the communication between agents is simplified as the hierarchy of agents and plans is already established by the goal order. 
@@ -175,25 +177,39 @@ The communication of results between agents are done through the same announcing
 
 
 \subsection{Shortcomings}
-
 The developed multi-agent system implements a lot of clever ideas, but as in most cases concerning planners, all algorithms might have negative and non-foreseen implications in some special cases. This applies to our planner as well. 
 
 
-The bidding and choosing of boxes for solving goals has one dire weakness, that without re-planning, will leave the client unable to solve the level. As the heuristics used for bidding favors boxes that are close to the goals,
+\textbf{Bidding}
 
-
+The bidding and choosing of boxes for solving goals has one dire weakness, that without re-planning, will leave the client unable to solve some levels. As the heuristics used for bidding favors boxes that are close to the goals, a situation can arise, where a box found to solve the relaxed problem, can't be used to solve the actual problem. A such situation arises in the level illustrated in \autoref{fig:shortcomings_bid}. As a goal is attempted to solve with the nearest box, the goal ordered to be solved first, will be attempted to be solved with the box furthest away from it, as all other boxes are taken. In the relaxed problem, this poses no issue and is easily solved. In the full problem, the boxes cannot be re-arranged, such that the chosen box can be used to solve the goal. THe client could however benefit from just taking any other box to solve to goal with. 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.3\textwidth]{shortcomings.png}
     \caption{A level where the bidding and choosing of boxes to solve goals with can pose a problem.}
-    \label{fig:shortcomings}
+    \label{fig:shortcomings_bid}
 \end{figure}
 
 
 
 \textbf{Backtracking limitation}
+
 There is currently no backtracking failsafe which means that the backtracking algorithm could possibly end up backtracking to the initial state and not find any allowed actions, resulting in the level not being solved. 
 At this point the client should repeat the planning with another approach than the one recently explored. 
 
+
+
+\textbf{Multi-agent and goal decomposition}
+
+The multi-agent communication, along with the goal decomposition lacks a very important feature. The ability for agents to request help from other agents. In the case of the level seen in \autoref{fig:shortcomings_multi}, agent ``0'' will decompose goal ``a'' and create a subgoal that it cannot solve. Specifically the moving of box ``B'', which only agent ``1'' is capable of. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{shortcomings_multi.png}
+    \caption{A level where communication and goal decomposition is inadequate.}
+    \label{fig:shortcomings_multi}
+\end{figure}
+
+
+\textbf{In general} the developed client relies heavily on the determined goal order being correct. Should it not be, the client is left to chance. 
 
 \end{document}

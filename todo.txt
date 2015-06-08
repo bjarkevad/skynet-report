@@ -10,18 +10,25 @@ Method:
 Shortcomings:
 - Not being able to allocate resources to get help moving boxes
 
+
 Experimenting:
 - Insert part about competition - comment on data structure used here
+
+
+Discussion:
+- Adapt to different situations over a more general solution ????
 
 
 Future:
 - Agent communication (move part from methods)
 
-- Occupied 
+- Occupied cells?
 
 - Total re-planning
 
-- "Planned subtasks that agents cannot carry out themselves need to be reallocated"
+- Re-planning / plan repair / better communication
+    - "Planned subtasks that agents cannot carry out themselves need to be reallocated"
+
 
 
 Refs:
