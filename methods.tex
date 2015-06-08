@@ -154,9 +154,9 @@ As the heuristics are calculated as the Manhattan distance between agent and box
 
 \subsection{Multi-agent} 
 
-The implementation of the multi-agent client is somewhat inspired by the Generalized Partial Global Planning from \cite{Decker, K., Li, J}. 
-\todo[inline]{ FIX REFERENCE BJARKE !!!!! }
+The implementation of the multi-agent client is somewhat inspired by the Generalized Partial Global Planning from \cite{Decker2000}. 
 
+\todo[inline]{FIX sect:subgoal\_pop}
 The goals are ordered with regards to whether or not they disrupt or conflict with other subgoal plans \autoref{sect:subgoal_pop}. As the planning is executed sequentially in the determined goal order, and not concurrently, the communication between agents is simplified as the hierarchy of agents and plans is already established by the goal order. 
 If an agent moves a box or occupies a cell at a given time, it is the other agents responsibility to comply with this and either wait or do something else. However, this practice relies on that the determined goal order is correct possible to complete. 
 
