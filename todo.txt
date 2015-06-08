@@ -1,11 +1,14 @@
 # TODO
 
 
+
 Method: 
-- Agent conflict "resolution"
-- 
+- Fix POP section 
+- Agent conflict "resolution" and agent communication
 - Fix overall structure
 
+Shortcomings:
+- Not being able to allocate resources to get help moving boxes
 
 Experimenting:
 - Insert part about competition - comment on data structure used here
@@ -14,3 +17,12 @@ Experimenting:
 Future:
 - Agent communication (move part from methods)
 
+- Total re-planning
+
+- "Planned subtasks that agents cannot carry out themselves need to be reallocated"
+
+
+Refs:
+
+5. Decker, K., Li, J.: Coordinating mutually exclusive resources using GPGP. Autonomous Agents and Multi-Agent Systems 3 (2000) 113–157
+6. von Martial, F.: Coordinating Plans of Autonomous Agents. Volume 610 of Lecture Notes on AI. (1992)
