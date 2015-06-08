@@ -30,9 +30,10 @@ POP, which had shown some rather impressive results, both by being able to solve
 
 \textbf{Adapting the planner to the situation}
 
-Throughout the development of our planner, many methods, algorithms and search strategies have been tried out and tested on many different and demanding levels. When the planner would struggle to Tsolve a level, changes were made to the planner that enabled it to solve that level. However, in some cases these changes also meant that the planner was no longer able to solve some levels that it was previously able to. Other changes meant that the planner was faster solving some levels, while much slower at solving others. Through all this testing and experimenting, it has become evident that is a grand task to create a generic planning system, even within this sole domain. 
+Throughout the development of our planner, many methods, algorithms and search strategies have been tried out and tested on many different and demanding levels. When the planner would struggle to Tsolve a level, changes were made to the planner that enabled it to solve that level. However, in some cases these changes also meant that the planner was no longer able to solve some levels that it was previously able to. Other changes meant that the planner was faster solving some levels, while much slower at solving others. Through all this testing and experimenting, it has become evident that is a grand task to create a generic automated planning system, even within this sole domain. 
 
 One search strategy proved to be fast while producing unnecessary long solutions. Another strategy proved to be slow, but found good, and close to optimal, solutions. In addition one strategy could solve some levels the other couldn't, and vice versa. This led us to consider making the planner adaptable to different situations by letting the strategy be dependent on the level, or time spent searching for a solution. However, we didn't do this, because then again, how would it react to a level we had not though of? Therefore we strove to develop a more robust and generic planner. 
+
 
 
 

@@ -3,10 +3,22 @@
 
 \subsection{Planning procedure}
 
-The proposed planning procedure for a multi-agent system can be divided in to "??????? four ????????" algorithms. The first being the distribution of goals between agents, done with a bidding algorithm\citep{VanderKrogt2005}. 
+The proposed planning procedure for an automated multi-agent planning system can be divided in to six algorithms. The six algorithms being:
+\begin{itemize}
+    \item Bidding
+    \item Relaxed partial problem search
+    \item Applying of goal ordering constraints and prioritizing
+    \item Goal decomposition
+    \item Backtracking
+    \item Solving goals
+\end{itemize}
+
+The planning procedure is somewhat inspired by partial order planning, as our planner regards the individual goals as isolated as possible, relies on goal ordering constraints and a backtracking algorithm. 
+
 
 % Bidding algorithm
-The \textit{bidding algorithm} utilizes simple heuristics consisting of the Manhattan distance between an agent and box, and box and goal, with a slight favoring of as few box moves as possible. All agents in the level will bid on all goals, that it is eligible for solving, and it will do so for all boxes that can solve the goal. After a round of bidding, the smallest bid, in terms of heuristics, is evaluated in order to determine if it is possible for the agent to fulfill the bid. The evaluation is done as a relaxed problem search. 
+\subsection{Bidding algorithm}
+The first part of the planning procedure is the distribution of goals between agents, done with a bidding algorithm\citep{VanderKrogt2005}. The bidding algorithm utilizes simple heuristics consisting of the Manhattan distance between an agent and box, and box and goal, with a slight favoring of as few box moves as possible. All agents in the level will bid on all goals, that it is eligible for solving, and it will do so for all boxes that can solve the goal. After a round of bidding, the smallest bid, in terms of heuristics, is evaluated in order to determine if it is possible for the agent to fulfill the bid. The evaluation is done as a relaxed problem search. 
 
 If the relaxed problem search returns a valid plan for the solving the goal, the agent will win the bid and the goal will be assigned to the agent. The relaxed plan, among others, containing information about goal, box, agent and traveled path, is kept and used for further preprocessing. 
 When a box is used for solving a relaxed plan, it will be marked as such, and bids on other goals, using that same box, will be ignored. 
@@ -15,42 +27,17 @@ Should an agent not be able to fulfill a bid, the next best bid will be chosen a
 
 Another step towards the best solution to a level in the bidding algorithm, is an agent burden check. If an agent, that at first glance has the winning bid, are much more burdened than the average agent, the next bid will be chosen. The burden considered here is based on the accumulated length of all the bids the agent has previously won and found solutions to (solutions to relaxed problems). 
 
+
 % Relaxed problem search algorithm
-The \textit{relaxed problem search} regards the level with only one agent at its initial location, one goal and one box that can possibly solve the goal. The search is done with $A^*$ strategy. 
-
-The relaxed problem search also functions as a sort of ``all goals shortest path'' calculation. It is however, not the shortest paths for all goals, but while it might be for some, it shows a possible path for all goals. 
-
-
-
 \subsection{Relaxed partial problem search}
-% Partial order planning can be said to occur twice in the planning procedure, as the
+The relaxed partial problem search regards the level with only one agent at its initial location, one goal and one box that can possibly solve the goal. The search is done as an $A^*$ search. 
 
-Our planning procedure is somewhat inspired by partial order planning, as our client regards the individual goals as isolated as possible. 
+The relaxed problem search also functions as a sort of ``all goals shortest path'' calculation. It is however, not the shortest paths for all goals, but while it might be for some, it shows a possible path for all goals. This also provide valuable information about the level for preprocessing.
 
-The procedure consists of two major parts. The first part is a sort of ``all goals' shortest path'' calculation as well as a determination of goal ordering / prioritizing. 
-It is done as a relaxed problem search where the only components regarded are the goal to be solved, a box to solve it with, the agent to move the box, and the walls of the level. The relaxed problem is solved utilizing $A^*$ search strategy. 
-
-
-The second part of our planning procedure  ............................ "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-\todo[inline]{FIX and MOVE !!!}
-
-
-\textit{Other advantages of relaxed problem search}
-
-The relaxed problem search finds a possible solution for all goals, which provide valuable information about the level for preprocessing. 
-
-\todo[inline]{Merge with above}
-
-
-
-\subsection{Search} 
-The actual search is done by exploring all possible actions in a given state. 
-
-\todo[inline]{Do we need this chapter ?????????????? }
 
 
 % Goal ordering algorithm
-\subsubsection{Goal ordering}
+\subsection{Applying of goal ordering constraints and prioritizing}
 \label{sec:goal_ordering}
 In order to add some knowledge to the search client before starting to solve goals, the goals are ordered. 
 
@@ -83,7 +70,7 @@ The relaxed problem is based on the initial state of the level, hence the soluti
 
 
 % Goal decomposition
-\subsubsection{Goal decomposition}
+\subsection{Goal decomposition}
 In an effort to make the search algorithm as simple as possible, it is desired to divide the goals into clearly identified individual subgoals. A situation it is an advantage to decompose a goal in our client's domain, could be the situation where a box is blocking the path for an agent moving another box towards a goal. In order to avoid creating complex and computational heavy heuristics taking all parts of a level into account, the goal decomposition allows us to only consider few elements at a time. The path used to find conflicting boxes, is the path found by solving the relaxed problem for each goal.
 
 The goal is decomposed into subgoals where each subgoal consists of a box that is blocking the path, and a cell where the box should be moved to so that it no longer blocks the path. The subgoals are sorted in the order in which the appear to be blocking the path to the actual goal. The subgoals are assigned to the goal, such that the subgoals should be completed before the client considers solving the actual goal. This is done by creating a specific case for the heuristics when subgoals exists on a goal. The heuristics is described in \autoref{sec:method_heuristics}. 
@@ -91,22 +78,8 @@ The goal is decomposed into subgoals where each subgoal consists of a box that i
 The implication of this approach to goal decomposition, using the path that is found by solving the goals as relaxed problems in the initial state, is that some of the created subgoals might not pose a conflict anymore, as the level and agent locations are changed. It is a very naive implementation that believes that the, in the beginning determined path, is the correct path. 
 
 
-
-% Full search algorithm
-\subsubsection{Search algorithm}
-Inspired by the POP algorithm each goal is solved one by one, without regarding the completion of the level, but simply considering the level solved when there are no more goals to solve. The implication of this is that the client will most likely not find the optimal solution, as an optimal solution for many levels requires the agent to move boxes along when traveling towards other boxes. A case like this can be seen in \autoref{fig:non_optimal}:
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.3\textwidth]{non_optimal.png}
-    \caption{Level with suboptimal solution.}
-    \label{fig:non_optimal}
-\end{figure}
-
-
-
-
 % Backtracking algorithm
-\subsubsection{Backtracking}
+\subsection{Backtracking}
 
 Inspired by partial order planning we have introduced a backtracking algorithm in our client. Even with the goals ordered with regards to conflicts, situations can occur where the agent places itself in a spot where it can get out of, without breaking a goal. A such situation occurs in the level visible in \autoref{fig:backtrack1}:
 \begin{figure}[h!]
@@ -123,6 +96,20 @@ When the agent solves a goal, it will proceed to solve the next goal assigned to
     \caption{Agent 0 finds alternative solution to goal A.}
     \label{fig:backtrack2}
 \end{figure}
+
+
+
+% Full search algorithm
+\subsection{Solving goals}
+
+Inspired by the POP algorithm each goal (maybe consisting of several subgoals) is solved one by one, without regarding the completion of the level, but simply considering the level solved when there are no more goals to solve. The implication of this is that the client will most likely not find the optimal solution, as an optimal solution for many levels requires the agent to move boxes along when traveling towards other boxes. A case like this can be seen in \autoref{fig:non_optimal}:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{non_optimal.png}
+    \caption{Level with suboptimal solution.}
+    \label{fig:non_optimal}
+\end{figure}
+
 
 
 
@@ -144,12 +131,13 @@ In the other situation the heuristics will be based on the distance between agen
 When doing relaxed problem search, the heuristics are based on the distance between the agent and the box, and the distance between the box and the goal. As those, include the walls, are the only elements in the level, there are no other complications to take into account. 
 
 
-
 \textbf{Admissibility of heuristics}
 
 As the heuristics are calculated as the Manhattan distance between agent and box, and box and goal, it is admissible. However, when non-helpful actions are considered, it is no longer the case due to the use of a discouraging factor. 
 
-\subsection{Multi-agent} 
+
+
+\subsection{Multi-agent handling} 
 
 The implementation of the multi-agent client is somewhat inspired by the Generalized Partial Global Planning from \cite{Decker2000}. 
 
@@ -158,10 +146,8 @@ If an agent moves a box or occupies a cell at a given time, it is the other agen
 
 The communication is simply done by letting the agents announce which cells they occupy at a given time in the plan as well as which box they move, if any. The other agents' planning procedures are then affected by the occupied cells, such that the agents' are imposed a resource constraint, keeping them from trying to use resources that are busy. 
 
-The communication of results between agents are done through the same announcing channels as mentioned above. As the execution is sequential, no actual notifications are sent, the information about results are just made available for all other agents to retrieve. Hard relationships are handled this way, such that if goal ``a'' must come before ``b'', the agent responsible for solving ``b'' cannot do this until ``a'' is solved.  
+The communication of results between agents are done through the same announcing channels as mentioned above. As the execution is sequential, no actual notifications are sent, the information about results are just made available for all other agents to retrieve. Hard relationships are handled this way, such that if goal ``a'' must come before ``b'', the agent responsible for solving ``b'' cannot do this until ``a'' is solved, and must therefore wait. 
 
-
-\todo[inline]{MORE MULTI AGENT STUFF !!!!!! }
 
 
 
@@ -197,6 +183,7 @@ The multi-agent communication, along with the goal decomposition lacks a very im
     \caption{A level where communication and goal decomposition is inadequate.}
     \label{fig:shortcomings_multi}
 \end{figure}
+
 
 
 \textbf{In general} the developed client relies heavily on the determined goal order, as well as the delegation of boxes for solving goals, being correct. Should it not be, the client is left to chance. 

@@ -7,6 +7,7 @@ Method:
 - [x] Agent conflict "resolution" and agent communication
 - [ ] Fix overall structure
 
+- MORE MULTI-AGENT !?!?
 
 
 Discussion:
