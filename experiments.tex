@@ -31,16 +31,10 @@ In the end, the HTN algorithm was discarded because the POP algorithm was perfor
 
 
 
-\subsection{General}
-
-\textbf{Experimenting with heuristics}
-\todo[inline]{Remove this section here ?????}
-The heuristics for the full problem search is a simple heuristic calculating the Manhattan distance between the active elements of a node. The active elements being an agent, a goal and a box chosen to solve the goal with. 
 
 
-
-\textbf{Experiments with search strategy}
-
+\subsection{Experiments with search strategy}
+\label{experiments_search_strategy}
 % - Multi vs. single BFS: Should show something about speed versus better solution 
 
 The most interesting experiments conducted with the used search strategy involved two strategies. Best-first search using $A^*$ evaluation and a modified version of a multi-queue best-first search using $A^*$ evaluation. The strategy applies to both relaxed and full problem search. 
@@ -72,7 +66,6 @@ The preprocessing being done in our implementation concerns the ordering of goal
 As an experiment, an ``all goals' shortest path'' algorithm was executed between each solved goal. The algorithm would solve all goals with all possible boxes as partial relaxed problems and then determine which box produces the shortest solution for each goal as well as determine mutual conflicts between goals. After obtaining the information, the goals could be ordered again with respect to the updated state. When considering levels with few goals and boxes, the overhead introduced by this algorithm is notable without being obstructive. However, when a level contains 50 boxes and goals spread over 4 types, the amount of possible combinations explodes and the overhead becomes a visible disadvantage, even though the found solution has the potential of being much better. 
 
 
-
 % During development experiments with different strategies regarding preprocessing, or extra-processing providing extra information, were conducted. 
 
 % As for the goal ordering based on a relaxed problem search on the initial state, the information about the level at this state is very useful. It is, however, preferred to have the same updated information after each solved goal. The moving of one or more boxes, and the change of the agent's location, will most likely leave the goal sorting less than optimal. It could therefore be beneficial to update the goal sorting, and maybe even the choosing of boxes for goals. 
@@ -84,46 +77,10 @@ As an experiment, an ``all goals' shortest path'' algorithm was executed between
 
 
 
+\subsection{Search frontier testing}
 
-\subsection{Benchmark}
+As our search client utilizes an $A^*$ search strategy, nodes are being added to the frontier as the search for the goal state progresses. Before a node is added, a check is performed to see if the node already is in the frontier. As the frontier grows large, this check can be expensive to perform. In order to make the lookup faster, experiments were conducted with a queue and a hash set in parallel. The hash set provides information about whether or not a node is already contained in the frontier.
 
-All tests and benchmarks found in this paper, as well as the submitted competition results have been performed on computer with the following specifications:
-
-\begin{itemize}
-\item CPU: 2.3 GHz Intel Core i7 (I7-4850HQ) 
-\item RAM: 8GB dedicated to the JVM
-\end{itemize}
-
-\textbf{Frontier testing}
-
-As the search is being done, nodes are being added to the frontier. Before a node is added, a check is performed to see if the node already is in the frontier. As the frontier grows large, this check can be expensive to perform. In order to make the lookup faster, experiments were conducted with a queue and a hash set in parallel. The hash set provides information about whether or not a node is already contained in the frontier.
-
-
-
-% % % % % % % % % % % % Something
-
-
-
-%%%%%%%%%%%%% Move below to queue experimenting
-% 20 second run 
-% BFS:
-% [Client said] Search starting with strategy Best-first Search (PriorityQueue) using A* evaluation
-% [Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 291.41 MB, Free: 316.59 MB, Alloc: 608.00 MB, MaxAlloc: 7282.00 MB]
-% [Client said] #Explored: 79000, #Frontier: 11774, Time: 20.33 s     [Used: 893.79 MB, Free: 727.21 MB, Alloc: 1621.00 MB, MaxAlloc: 7282.00 MB]
-
-% Multi queue BFS:
-% [Client said] Search starting with strategy Multi-Best-first Search (PriorityQueue) using A* evaluation
-% [Client said] #Explored:    0, #Frontier:   1, Time: 0.00 s     [Used: 260.84 MB, Free: 219.66 MB, Alloc: 480.50 MB, MaxAlloc: 7282.00 MB]
-% [Client said] #Explored: 256978, #Frontier: 198642, Time: 20.47 s   [Used: 4007.45 MB, Free: 1369.05 MB, Alloc: 5376.50 MB, MaxAlloc: 7282.00 MB]
-
-
-
-% From the results it is very clear that the multi queue BFS memory consumption is a great deal higher than single-queue BFS. 
-
-
-
-\subsection{Results}
-\FloatBarrier
 
 \begin{figure}[h!]
     \centering
@@ -146,5 +103,32 @@ priority queues does so linearly to the number of elements in the queue ($O(n)$)
 
 As look ups happen when checking if a node is already explored, the operation happens with a very high frequency, which causes the major difference in performance observed on \autoref{fig:node_explored_comparison}.
 
-\FloatBarrier
+
+
+
+
+
+
+\subsection{Results}
+
+\todo[inline]{WRITE HERE OR REMOVE THIS !?!?!?!?!?!?}
+
+
+
+
+
+\subsection{Benchmark and competition}
+
+All tests and benchmarks found in this paper, as well as the submitted competition results, have been performed on computer with the following specifications:
+
+\begin{itemize}
+\item CPU: 2.3 GHz Intel Core i7 (I7-4850HQ) 
+\item RAM: 8GB dedicated to the JVM
+\end{itemize}
+
+
+The submitted competition results were obtained using the multi-queue BFS strategy described above in \autoref{experiments_search_strategy}. Using the multi-queue BFS produced a solution to one more level, than the normal BFS strategy did, the solutions were however less optimal. Worth noting is the level SAHoldkaeft, which our client used around 2800 actions to solve. This is extremely bad compared to the winning solution at 188 actions. However, our client managed to come up with the solution in just 1 second, being the fastest found solution, as well as the longest. 
+
+
+
 \end{document}
