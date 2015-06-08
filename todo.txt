@@ -7,13 +7,7 @@ Method:
 - [x] Agent conflict "resolution" and agent communication
 - [ ] Fix overall structure
 
-Shortcomings:
-- Not being able to allocate resources to get help moving boxes
 
-
-Experimenting:
-- Insert part about competition - comment on data structure used here
-- Experiments with partial relaxed search updates
 
 Discussion:
 - Adapt to different situations over a more general solution ????

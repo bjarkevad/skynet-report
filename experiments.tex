@@ -65,6 +65,9 @@ The preprocessing being done in our implementation concerns the ordering of goal
 
 As an experiment, an ``all goals' shortest path'' algorithm was executed between each solved goal. The algorithm would solve all goals with all possible boxes as partial relaxed problems and then determine which box produces the shortest solution for each goal as well as determine mutual conflicts between goals. After obtaining the information, the goals could be ordered again with respect to the updated state. When considering levels with few goals and boxes, the overhead introduced by this algorithm is notable without being obstructive. However, when a level contains 50 boxes and goals spread over 4 types, the amount of possible combinations explodes and the overhead becomes a visible disadvantage, even though the found solution has the potential of being much better. 
 
+\todo[inline]{Tie a comment / conclusion to this}
+
+
 
 % During development experiments with different strategies regarding preprocessing, or extra-processing providing extra information, were conducted. 
 
@@ -106,14 +109,9 @@ As look ups happen when checking if a node is already explored, the operation ha
 
 
 
-
-
-
 \subsection{Results}
 
 \todo[inline]{WRITE HERE OR REMOVE THIS !?!?!?!?!?!?}
-
-
 
 
 
