@@ -1,18 +1,17 @@
 \documentclass[Main]{subfiles}
 \begin{document}
 
-\textbf{Optimization of implemented client}
+\subsection{Optimization of implemented planner}
+
+As a resolution to the shortcomings mentioned in \autoref{sec:shortcomings} and further optimization, a short listing of to-do's is proposed:
+\begin{itemize}
+    \item Soften bidding and selection of boxes to solve goals with, such that they aren't final.
+    \item Make a more robust backtracking with re-planning as fail-safe.
+    \item Create a means for agents to create subgoals to be solved by other agents.
+    % \item Re-order goals after solving each goal. 
+\end{itemize}
 
 
-- Ordering of goals and goals conflicting - maybe look for goals with most walls around (such as safe goals)
-
-- Use partial plan as guideline for Heuristics
-
-- Better subgoal decomposition
-
-- "Better" back tracking
-
-- Re-order goals?
 
 \subsection{Heuristics optimization}
 The current implementation of heuristics is very simple, and could with advantage be developed further to regard the plan to the relaxed problem as a guide-line. An idea would be to implement ``tie-breaking'' heuristics \citep{stanford2015}, where the heuristics favor movements as close as possible to the plan solving the relaxed problem. 
@@ -36,7 +35,7 @@ If an agent moves a box or occupies a cell at a given time, it is the other agen
 However, this practice relies on that the determined goal order is correct possible to complete.
 
 
-\subsection{Dealing with conflicts and plan collaboration in concurrent planning}
+\subsubsection{Dealing with conflicts and plan collaboration in concurrent planning}
 
 Another way, could be to adjust the planning to be performed concurrently for all agents, using methods described in \citep{pellier2007unified}.
 
@@ -104,14 +103,17 @@ Since agent "1" has completed its \textit{complex action} to move out of the way
 However upon generating the first action for the refinement of the \textit{complex action}, agent "1" will get a \textit{refutation} from agent "0", and agent "0" will command agent "1" to wait.
 This conflict will repeat until agent "0" is out of the way, and finally agent "1" can refine its \textit{complex action} to solve goal "b".
 
+
+
+
 \todo[inline]{Communication}
 
 \todo[inline]{Auction of 'unsolvable' or expensive goals \cite{VanderKrogt2005}}
 \todo[inline]{Cyclic dependencies}
 \todo[inline]{\cite{Nguyen2001}}
 
-
-\todo[inline]{Pruning algorithm to limit branching factor [http://en.wikipedia.org/wiki/Pruning\_(decision\_trees)]}
 \todo[inline]{concurrency/parallel}
+
+
 
 \end{document}
