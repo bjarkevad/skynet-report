@@ -2,47 +2,115 @@
 \begin{document}
 \FloatBarrier
 
-The planning problem was approached from two different angles, that were intended to be merged later. The two approaches are partial order planning and hierarchical task network. Inspiration for this approach was found in \cite{pellier2007unified}. 
-
+The planning problem was approached from two different angles, that were
+intended to be merged later. The two approaches are partial order planning and
+hierarchical task network. Inspiration for this approach was found in
+\cite{pellier2007unified}. 
 
 \subsection{HTN}
-As part of the development, a simple HTN algorithm for solving single agent levels were implemented.
-The algorithm utilized a genetic algorithm to calculate an optimal order in which to solve the goals.
-The motivation for using a genetic algorithm, is that the problem of finding an optimal route to move a set of boxes to a set of goals, can be seen as a traveling salesman problem which is an np-complete task that genetic algorithms can help generate a solution for.
-Genetic algorithms cannot calculate the most optimal order, but it can come up with a relative good suboptimal solution in a timely manner. The genetic algorithm used for the HTN experiments is inspired by the implementation at \cite{genetic}.
+As part of the development, a simple HTN algorithm for solving single agent
+levels were implemented.
 
-The genetic algorithm basically works by creating a population which is a list of lists where the inner lists are random permutations of all goals to be completed.
-Next the outer list is sorted using an evaluation function which calculates the travel time to complete a given permutation of goals.
-The algorithm now mutates and shuffles some of the population by using parts from the best performing permutations.
+The algorithm utilized a genetic algorithm to calculate an optimal order in
+which to solve the goals.
+
+The motivation for using a genetic algorithm, is that the problem of finding an
+optimal route to move a set of boxes to a set of goals, can be seen as a
+traveling salesman problem which is an np-complete task that genetic algorithms
+can help generate a solution for.
+
+Genetic algorithms cannot calculate the most optimal order, but it can come up
+with a relative good suboptimal solution in a timely manner. The genetic
+algorithm used for the HTN experiments is inspired by the implementation at
+\cite{genetic}.
+
+The genetic algorithm basically works by creating a population which is a list
+of lists where the inner lists are random permutations of all goals to be
+completed.
+
+Next the outer list is sorted using an evaluation function which calculates the
+travel time to complete a given permutation of goals.
+The algorithm now mutates and shuffles some of the population by using parts
+from the best performing permutations.
 This goes on until the algorithm doesn't seem to produce good results anymore.
 
-The HTN implementation itself, works by taking set of goals as input, where each goal can be seen as a high level \textit{complex action}. The first goal is chosen and the algorithm decomposes it into a complex action to "move to the box" and a \textit{complex action} to "move the box to the goal". Next the algorithm decomposes the action "move to the box" into primitive actions where only move actions are considered, and the "move box to goal" action into \textit{primitive actions} where all actions are considered.
-The algorithm uses the $A^*$ algorithm to decompose into the \textit{primitive actions}.
+The HTN implementation itself, works by taking set of goals as input, where each
+goal can be seen as a high level \textit{complex action}. The first goal is
+chosen and the algorithm decomposes it into a complex action to "move to the
+box" and a \textit{complex action} to "move the box to the goal". Next the
+algorithm decomposes the action "move to the box" into primitive actions where
+only move actions are considered, and the "move box to goal" action into
+\textit{primitive actions} where all actions are considered.
 
-When the algorithm starts, it only takes the first box for the first goal into account and the rest act as obstacles. When a goal has been completed, the current box remains visible and no longer acts as an obstacle, and can thus still be manipulated. This reduces the branching factor when solving the individual goals in the beginning, -but adds more and more branching factor towards the completion of the unified plan.
-
-The algorithm starts out with a relaxed search space, as it only takes the first box, to be moved to the first goal, into account and deals with the rest of the boxes as obstacles -when solving for the first goal.
-When a goal has been completed, the current box remains active and no longer acts as an obstacle so it can be manipulated in the process of solving the next complex actions for the other goals.
-This reduces the branching factor when solving the individual goals in the beginning, but adds more and more branching factor towards the completion of the unified plan.
-
-The HTN algorithm is inspired by \cite{nau2003shop2}, where \textit{Tasks} correspond to the highest level complex actions, \textit{Methods} corresponds to decomposition of the top level complex action, \textit{Operators} correspond to \textit{primitive actions} which is derived when refining the \textit{complex actions}, and the \textit{External function call} corresponds to the utilization of the genetic algorithm for finding an optimal goal order.
-
-In the end, the HTN algorithm was discarded because the POP algorithm was performing a lot better and it was therefore chosen to focus on the POP algorithm.
+The algorithm uses the $A^*$ algorithm to decompose into the \textit{primitive
+  actions}.
 
 
+When the algorithm starts, it only takes the first box for the first goal into
+account and the rest act as obstacles. When a goal has been completed, the
+current box remains visible and no longer acts as an obstacle, and can thus
+still be manipulated. This reduces the branching factor when solving the
+individual goals in the beginning, -but adds more and more branching factor
+towards the completion of the unified plan.
 
+The algorithm starts out with a relaxed search space, as it only takes the first
+box, to be moved to the first goal, into account and deals with the rest of the
+boxes as obstacles -when solving for the first goal.
 
+When a goal has been completed, the current box remains active and no longer
+acts as an obstacle so it can be manipulated in the process of solving the next
+complex actions for the other goals.
+
+This reduces the branching factor when solving the individual goals in the
+beginning, but adds more and more branching factor towards the completion of the
+unified plan.
+
+The HTN algorithm is inspired by \cite{nau2003shop2}, where \textit{Tasks}
+correspond to the highest level complex actions, \textit{Methods} corresponds to
+decomposition of the top level complex action, \textit{Operators} correspond to
+\textit{primitive actions} which is derived when refining the \textit{complex
+  actions}, and the \textit{External function call} corresponds to the
+utilization of the genetic algorithm for finding an optimal goal order.
+
+In the end, the HTN algorithm was discarded because the POP inspired algorithm was
+performing a lot better, and it was therefore chosen to focus on that.
 
 \subsection{Experiments with search strategy}
 \label{sec:experiments_search_strategy}
 % - Multi vs. single BFS: Should show something about speed versus better solution 
 
-The most interesting experiments conducted with the used search strategy involved two strategies. Best-first search using $A^*$ evaluation and a modified version of a multi-queue best-first search using $A^*$ evaluation. The strategy applies to both relaxed and full problem search. 
-The multi-queue best-first search utilizes two queues, one active ``main queue'' and one ``back-up queue''. The strategy is a very naive implementation of a multi-queue BFS, as a normal implementation alternates between expansions of the nodes in both queues \citep{hector2013a}, whereas our implementation relies heavily on the ``main queue'' being the \textit{``correct queue''}. Every time a node is expanded, all other nodes in the ``main queue'' are added to the ``back-up queue'' and removed from the main, such that the child nodes from the expanded node are the only nodes in the ``main queue''. In effect this means that our strategy always believes it makes the right choice, which of course is not the case. In the case where the expanded nodes do not lead to solving a goal, the ``main queue'' will at some point turn up empty. When this happens, the most promising node from the ``back-up queue'' is expanded. As the strategy uses $A^*$ evaluation, it is likely that the most promising node will be a node early in the node tree, as its traveled path is short or non-existing. 
+The most interesting experiments conducted with the used search strategy
+involved two strategies. Best-first search using $A^*$ evaluation and a modified
+version of a multi-queue best-first search, also using $A^*$ evaluation. The
+strategy applies to both relaxed and full problem search. 
 
-The two strategies are compared by comparing the solutions they find to a level. The comparison is regarded from two aspects; completion time, and used actions. As the multi-queue BFS implementation functions as a combination of best-first-search and depth-first-search, it could possibly reach a goal state faster than the normal BFS. The found solution could however be much less than optimal. The standard BFS $A^*$ search is more likely to produce a solution that is more optimal than multi-queue BFS, whereas it might spend more time reaching the goal state. 
+The multi-queue best-first search utilizes two queues, one active ``main queue''
+and one ``back-up queue''. The strategy is a very naive implementation of a
+multi-queue BFS, as a normal implementation alternates between expansions of the
+nodes in both queues \citep{hector2013a}, whereas our implementation relies
+heavily on the ``main queue'' being the \textit{``correct queue''}. Every time a
+node is expanded, all other nodes in the ``main queue'' are added to the
+``back-up queue'' and removed from the main, such that the child nodes from the
+expanded node are the only nodes in the ``main queue''. In effect this means
+that our strategy always believes it makes the right choice, which of course is
+not the case. In the case where the expanded nodes do not lead to solving a
+goal, the ``main queue'' will at some point turn up empty. When this happens,
+the most promising node from the ``back-up queue'' is expanded. As the strategy
+uses $A^*$ evaluation, it is likely that the most promising node will be a node
+early in the node tree, as its traveled path is short or non-existing. 
 
-As an example of a fast, but ``stupid'' solution solution found using the multi-queue BFS strategy, the level SAHoldkaeft is regarded. The following results were achieved using the two strategies:
+The two strategies are compared by comparing the solutions they find to a level.
+The comparison is regarded from two aspects: completion time, and actions taken.
+As the multi-queue BFS implementation functions as a combination of
+best-first-search and depth-first-search, it could possibly reach a goal state
+faster than the normal BFS. The found solution could however be much less than
+optimal. The standard BFS $A^*$ search is more likely to produce a solution that
+is more optimal than multi-queue BFS, whereas it might spend more time reaching
+the goal state. 
+
+As an example of a fast, but ``stupid'' solution solution found using the
+multi-queue BFS strategy, the level SAHoldkaeft is regarded. The following
+results were achieved using the two strategies:
 
 \begin{table}[h]
 \begin{tabular}{lll}
@@ -53,21 +121,32 @@ Multi-queue BFS & 22.6 s       & 210                       %& 44                
 \end{tabular}
 \end{table}
 
-
-
-
-
 \subsection{Preprocessing overhead}
+In order to make the search efficient and fast, we want it to be as informed as
+possible. However, obtaining information for the search takes time and may pose
+an undesired overhead. To determine how much preprocessing should be done a lot
+of experimenting and tweaking with this, has been conducted. 
 
-In order to make the search efficient and fast, we want it to be as informed as possible. However, obtaining information for the search takes time and may pose an undesired overhead. To determine how much preprocessing should be done a lot of experimenting and tweaking with this, has been conducted. 
+The preprocessing being done in our implementation concerns the ordering of
+goals, as well as determining which boxes to solve each goal with. As the
+preprocessing is a performed as a partial relaxed problem based on the initial
+state of the level, the information gathered will be outdated as soon as any
+actions are performed. 
 
-The preprocessing being done in our implementation concerns the ordering of goals, as well as determining which boxes to solve each goal with. As the preprocessing is a performed as a partial relaxed problem based on the initial state of the level, the information gathered will be outdated as soon as any actions are performed. 
+As an experiment, an ``all goals' shortest path'' algorithm was executed between
+each solved goal. The algorithm would solve all goals with all possible boxes as
+partial relaxed problems and then determine which box produces the shortest
+solution for each goal as well as determine mutual conflicts between goals.
+After obtaining the information, the goals could be ordered again with respect
+to the updated state. When considering levels with few goals and boxes, the
+overhead introduced by this algorithm is notable without being obstructive.
+However, when a level contains 50 boxes and goals spread over 4 types, the
+amount of possible combinations explodes and the overhead becomes a visible
+disadvantage, even though the found solution has the potential of being much
+better. 
 
-As an experiment, an ``all goals' shortest path'' algorithm was executed between each solved goal. The algorithm would solve all goals with all possible boxes as partial relaxed problems and then determine which box produces the shortest solution for each goal as well as determine mutual conflicts between goals. After obtaining the information, the goals could be ordered again with respect to the updated state. When considering levels with few goals and boxes, the overhead introduced by this algorithm is notable without being obstructive. However, when a level contains 50 boxes and goals spread over 4 types, the amount of possible combinations explodes and the overhead becomes a visible disadvantage, even though the found solution has the potential of being much better. 
-
-Due to the possible excessive overhead, we decided not to run the algorithm for each solved goal iteration. 
-
-
+Due to the possible excessive overhead, we decided not to run the algorithm for
+each solved goal iteration. 
 
 % During development experiments with different strategies regarding preprocessing, or extra-processing providing extra information, were conducted. 
 
@@ -77,13 +156,14 @@ Due to the possible excessive overhead, we decided not to run the algorithm for 
 
 % - Performance affected by number of goals and agents in level, if few, maybe beneficial, if many it could produce a lot of overhead.
 
-
-
-
 \subsection{Search frontier testing}
-
-As our search client utilizes an $A^*$ search strategy, nodes are being added to the frontier as the search for the goal state progresses. Before a node is added, a check is performed to see if the node already is in the frontier. As the frontier grows large, this check can be expensive to perform. In order to make the lookup faster, experiments were conducted with a queue and a hash set in parallel. The hash set provides information about whether or not a node is already contained in the frontier.
-
+As our search client utilizes an $A^*$ search strategy, nodes are being added to
+the frontier as the search for the goal state progresses. Before a node is
+added, a check is performed to see if the node already is in the frontier. As
+the frontier grows large, this look up can be expensive to perform. In order to
+make the lookup faster, experiments were conducted with a queue and a hash set
+in parallel. The hash set provides information about whether or not a node is
+already contained in the frontier.
 
 \begin{figure}[h!]
     \centering
@@ -99,31 +179,32 @@ As our search client utilizes an $A^*$ search strategy, nodes are being added to
 %     \label{fig:node_frontier_comparison}
 % \end{figure}
 
-On \autoref{fig:node_explored_comparison} we see a comparison of the performance, between the use of two different data structures for holding nodes. 
-The difference is mainly caused by the different performance characteristics for random look ups, 
-where a hash set performs look ups in constant time ($O(1)$) in the average case,
-priority queues does so linearly to the number of elements in the queue ($O(n)$).
-
-As look ups happen when checking if a node is already explored, the operation happens with a very high frequency, which causes the major difference in performance observed on \autoref{fig:node_explored_comparison}.
-
-
-
-% \subsection{Results}
-\todo[inline]{WRITE RESULTS SECTION HERE - OR REMOVE THIS !?!?!?!?!?!?}
-
+On \autoref{fig:node_explored_comparison} we see a comparison of the
+performance, between the use of two different data structures for holding nodes. 
+The difference is mainly caused by the different performance characteristics for
+random look ups, 
+where a hash set performs look ups in constant time ($O(1)$) in the average
+case, priority queues does so linearly to the number of elements in the queue
+($O(n)$). As look ups happen when checking if a node is already explored, the
+operation happens with a very high frequency, which causes the major difference
+in performance observed on \autoref{fig:node_explored_comparison}.
 
 \subsection{Benchmark and competition}
-
-All tests and benchmarks found in this paper, as well as the submitted competition results, have been performed on computer with the following specifications:
+All tests and benchmarks found in this paper, as well as the submitted
+competition results, have been performed on computer with the following
+specifications:
 
 \begin{itemize}
 \item CPU: 2.3 GHz Intel Core i7 (I7-4850HQ) 
 \item RAM: 8GB dedicated to the JVM
 \end{itemize}
 
-
-The submitted competition results were obtained using the multi-queue BFS strategy described above in \autoref{sec:experiments_search_strategy}. Using the multi-queue BFS produced a solution to one more level, than the normal BFS strategy did, the solutions were however less optimal. Worth noting is the level SAHoldkaeft, which our client used around 2800 actions to solve. This is extremely bad compared to the winning solution at 188 actions. However, our client managed to come up with the solution in just 1 second, being the fastest found solution, as well as the longest. 
-
-
-
+The submitted competition results were obtained using the multi-queue BFS
+strategy described above in \autoref{sec:experiments_search_strategy}. Using the
+multi-queue BFS produced a solution to one more level, than the normal BFS
+strategy did, the solutions were however less optimal. Worth noting is the level
+SAHoldkaeft, which our client used around 2800 actions to solve. This is
+extremely bad compared to the winning solution at 188 actions. However, our
+client managed to come up with the solution in just 1 second, being the fastest
+found solution, as well as the longest. 
 \end{document}
